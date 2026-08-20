@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Lab Studio — Mixed Media</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    * { box-sizing: border-box; }
+    a.al-link { color: var(--al-text); text-decoration: none; }
+    a.al-link:hover { color: var(--al-accent); }
+    .al-input::placeholder { color: #8a8a86; }
+    .al-input:focus-visible, .al-btn:focus-visible, button.al-icon:focus-visible { outline: 2px solid var(--al-accent); outline-offset: 2px; }
+  </style>
+</helmet>
+
+<div style="{{ rootStyle }}">
+
+  <header style="position:sticky;top:0;z-index:40;background:var(--al-bg);border-bottom:1px solid var(--al-divider)">
+    <nav style="max-width:1280px;margin:0 auto;padding:20px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <a href="#top" class="al-link" style="font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.01em">ART LAB STUDIO</a>
+      <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+        <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
+          <a href="{{ link.to }}" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ link.label }}</a>
+        </sc-for>
+        <button type="button" class="al-icon" onClick="{{ toggleTheme }}" aria-label="Toggle dark mode" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;border:1px solid var(--al-divider);background:transparent;color:var(--al-text);cursor:pointer">{{ themeIcon }}</button>
+      </div>
+    </nav>
+  </header>
+
+  <section id="top" style="max-width:1280px;margin:0 auto;padding:clamp(48px,9vw,120px) clamp(20px,5vw,72px) 64px">
+    <h1 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(56px,11vw,132px);line-height:0.92;letter-spacing:-0.01em;margin:0;text-transform:uppercase;color:var(--al-text)">ART LAB<br>Mixed Media</h1>
+    <div style="display:flex;gap:20px;margin-top:40px;max-width:640px">
+      <div style="flex:0 0 4px;background:var(--al-accent);border-radius:1px"></div>
+      <p style="font-size:20px;line-height:1.5;margin:0;color:var(--al-muted)">An immersive, material-driven fine arts course focused on developing strong studio skills, a refined aesthetic, and creative problem-solving through hands-on artmaking, experimentation, and material science.</p>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:40px;flex-wrap:wrap">
+      <a href="#syllabus" class="al-btn" style="background:var(--al-accent);color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;border-radius:3px;text-decoration:none">View Syllabus</a>
+      <a href="#enrollment" class="al-btn" style="background:transparent;color:var(--al-text);border:1px solid var(--al-divider-strong);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;border-radius:3px;text-decoration:none">Enrollment 2026</a>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid var(--al-divider)"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,72px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:48px">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--al-accent);margin-bottom:16px">{{ f.title }}</div>
+          <p style="font-size:15.5px;line-height:1.65;color:var(--al-muted);margin:0">{{ f.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid var(--al-divider)"></div></div>
+
+  <section id="portfolio" style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--al-accent);margin-bottom:16px">Professional Portfolio</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(28px,4vw,42px);letter-spacing:-0.01em;margin:0 0 12px;text-transform:uppercase;color:var(--al-text)">Selected student work</h2>
+    <p style="font-size:15.5px;color:var(--al-muted);max-width:56ch;margin:0 0 14px">A record of process and material experimentation from the studio.</p>
+    <p style="font-size:15.5px;line-height:1.65;color:var(--al-muted);max-width:60ch;margin:0 0 40px;text-wrap:pretty">Every student will have the option of their own portfolio page — a place to feature their work as it develops through the semester, and to share it with family and friends.</p>
+    <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:clamp(28px,3.5vw,44px)">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+        <div>
+          <div data-frame="" style="{{ g.frameStyle }}" onMouseEnter="{{ g.onEnter }}" onMouseLeave="{{ g.onLeave }}" onDragEnter="{{ g.onDragEnter }}" onDragOver="{{ g.onDragOver }}" onDragLeave="{{ g.onDragLeave }}" onDrop="{{ g.onDrop }}">
+            <sc-if value="{{ g.hasImage }}" hint-placeholder-val="{{ true }}">
+              <img src="{{ g.src }}" alt="{{ g.title }}" draggable="false" style="{{ g.imgStyle }}" onLoad="{{ g.onImgLoad }}" onPointerDown="{{ g.onMoveDown }}">
+            </sc-if>
+            <sc-if value="{{ g.isEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:1px dashed var(--al-divider-strong)">
+                <span style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--al-muted)">empty slot</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ g.isEditing }}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{ g.handles }}" as="h" hint-placeholder-count="8">
+                <div data-handle="{{ h.name }}" style="{{ h.style }}" onPointerDown="{{ g.onHandleDown }}"></div>
+              </sc-for>
+            </sc-if>
+            <div style="{{ g.ctlStyle }}">
+              <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onReplace }}">Replace</button>
+              <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onToggleEdit }}">{{ g.editLabel }}</button>
+              <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onToggleAdjust }}">Adjust</button>
+              <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onToggleRemove }}">{{ g.removeLabel }}</button>
+            </div>
+            <sc-if value="{{ g.isEditing }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ g.zoomBarStyle }}">
+                <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onFit }}">Fit whole image</button>
+                <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onFill }}">Fill frame</button>
+                <button type="button" style="{{ g.btnStyle }}" onClick="{{ g.onResetFrame }}">Reset</button>
+                <input type="range" min="20" max="400" value="{{ g.zoomPct }}" onInput="{{ g.onZoom }}" style="flex:1;min-width:90px;accent-color:var(--al-accent)">
+              </div>
+            </sc-if>
+            <sc-if value="{{ g.isAdjusting }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ g.adjustPanelStyle }}">
+                <label style="display:flex;flex-direction:column;gap:3px">Brightness
+                  <input type="range" min="50" max="150" value="{{ g.filter.br }}" onInput="{{ g.onBr }}">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:3px">Contrast
+                  <input type="range" min="50" max="150" value="{{ g.filter.ct }}" onInput="{{ g.onCt }}">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:3px">Saturation
+                  <input type="range" min="0" max="200" value="{{ g.filter.sa }}" onInput="{{ g.onSa }}">
+                </label>
+                <button type="button" style="{{ g.resetBtnStyle }}" onClick="{{ g.onResetFilter }}">Reset</button>
+              </div>
+            </sc-if>
+          </div>
+          <div style="margin-top:14px">
+            <div style="font-size:15px;font-weight:600;color:var(--al-text)">{{ g.title }}</div>
+            <div style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--al-muted);margin-top:4px">{{ g.medium }}</div>
+          </div>
+        </div>
+      </sc-for>
+      <input type="file" accept="image/*" ref="{{ setFileInputRef }}" onChange="{{ onFileChange }}" style="display:none">
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid var(--al-divider)"></div></div>
+
+  <section id="syllabus" style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--al-accent);margin-bottom:16px">Syllabus</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(28px,4vw,42px);letter-spacing:-0.01em;margin:0 0 32px;text-transform:uppercase;color:var(--al-text);max-width:20ch">Read the full course, or jump straight to what you need</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:20px;max-width:900px">
+      <a href="/course-and-syllabus" class="al-link" style="display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:40px;border:1px solid var(--al-divider);border-radius:3px">
+        <svg width="28" height="28" viewBox="0 0 256 256" fill="currentColor" style="color:var(--al-accent);margin-bottom:8px"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg>
+        <span style="font-size:14px;font-weight:600">Course &amp; Syllabus</span>
+        <span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--al-muted)">Full breakdown + PDF</span>
+      </a>
+      <a href="/enroll-and-pay" class="al-link" style="display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:40px;border:1px solid var(--al-divider);border-radius:3px">
+        <svg width="28" height="28" viewBox="0 0 256 256" fill="currentColor" style="color:var(--al-accent);margin-bottom:8px"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-88a8,8,0,0,1-8,8H136v40a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V80a8,8,0,0,1,16,0v40h32A8,8,0,0,1,168,128Z"></path></svg>
+        <span style="font-size:14px;font-weight:600">Enroll &amp; Pay</span>
+        <span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--al-muted)">2026 enrollment</span>
+      </a>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid var(--al-divider)"></div></div>
+
+  <section id="enrollment" style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--al-accent);margin-bottom:16px">Enrollment 2026</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(28px,4vw,42px);letter-spacing:-0.01em;margin:0 0 20px;text-transform:uppercase;color:var(--al-text);max-width:24ch">Enrolling now for the 2026 session</h2>
+    <p style="font-size:15.5px;line-height:1.65;color:var(--al-muted);max-width:56ch;margin:0 0 8px">Academic Session: Sept–December&nbsp;</p>
+    <p style="font-size:15.5px;line-height:1.65;color:var(--al-muted);max-width:56ch;margin:0 0 32px">High School Fine Arts Credit</p>
+    <a href="/enroll-and-pay" class="al-btn" style="display:inline-block;background:var(--al-accent);color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;border-radius:3px;text-decoration:none;margin-bottom:24px">Enroll &amp; Pay</a>
+    <p style="font-size:14px;color:var(--al-muted);margin:0">Questions about enrollment? Email <a href="mailto:admissions@isaacandersonart.com" class="al-link" style="color:var(--al-accent)">admissions@isaacandersonart.com</a></p>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 96px">
+    <div style="background:var(--al-band-bg);border-radius:4px;padding:clamp(32px,6vw,64px);display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
+      <div>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(32px,5vw,52px);letter-spacing:-0.01em;margin:0 0 20px;text-transform:uppercase;color:var(--al-band-text)">Join the Lab</h2>
+        <p style="font-size:15px;line-height:1.6;color:var(--al-band-muted);margin:0">Academic Session: Sept–Dec<br>High School Fine Arts Credit</p>
+      </div>
+      <sc-if value="{{ signupSent }}" hint-placeholder-val="{{ false }}">
+      <p style="color:var(--al-band-text);font-size:14px;margin:0;min-width:280px;flex:0 1 340px">Thanks — we'll send the syllabus to your email shortly.</p>
+      </sc-if>
+      <sc-if value="{{ signupNotSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onSubmitSignup }}" style="display:flex;flex-direction:column;gap:12px;min-width:280px;flex:0 1 340px">
+        <input class="al-input" type="email" required="" placeholder="Enter Email Address" value="{{ signupEmail }}" onChange="{{ onChangeSignupEmail }}" style="background:#fff;color:#191919;border:none;border-radius:3px;padding:14px 16px;font-size:14px;font-family:inherit">
+        <button type="submit" disabled="{{ signupSending }}" style="background:var(--al-accent);color:#fff;border:none;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border-radius:3px;cursor:pointer">{{ signupButtonLabel }}</button>
+        <sc-if value="{{ signupError }}" hint-placeholder-val="{{ false }}">
+        <p style="color:#e2573a;font-size:12px;margin:0">Something went wrong — email <a href="mailto:admissions@isaacandersonart.com" style="color:#e2573a">admissions@isaacandersonart.com</a> directly.</p>
+        </sc-if>
+      </form>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--al-divider)">
+    <div style="max-width:1280px;margin:0 auto;padding:32px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--al-muted)">© {{ year }} Art Lab Studio</span>
+      <a href="https://isaacandersonart.com" target="_blank" rel="noopener noreferrer" class="al-link" style="font-size:12px;letter-spacing:0.04em;color:var(--al-muted)">isaacandersonart.com</a>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GALLERY = [
+  { id: 102, title: 'Observational Drawing & Handmade Paint Study', medium: 'UnitS 1-2 · SEEING & DRAWING · USING Pigment & Binder', hue: 20, src: './images/gallery-102-blend.png' },
+  { id: 103, title: 'Geopolymer & Cementitious Materials', medium: 'Unit 3  · Geopolymer and Cementitious Materials', hue: 60, src: './images/gallery-103-geopolymer-bowl.jpeg' },
+  { id: 104, title: 'Layers, Light, and Textures', medium: 'Unit 4 · Experiments with layered and 3D surfaces', hue: 90, src: './images/gallery-104-raking-light.jpg' },
+  { id: 106, title: 'Final Project', medium: 'Unit 5 · Studio Day', hue: 340 },
+].map((g) => ({ ...g, src: g.src || `./images/gallery-${g.id}.png` }));
+
+const FEATURES = [
+  { title: 'Custom Pigments & Binders', body: 'Engineering custom pigments and binders by synthesizing historic methodologies with modern applications. Students transition from consumers of art supplies to creators of their own unique media.' },
+  { title: 'Process Exploration', body: 'The process is part of the art. Students explore the why and the how through experimentation, material discovery, and creative problem-solving—learning to take an idea from curiosity to finished work while developing their own artistic voice.' },
+  { title: 'Art + Science', body: 'Where creative exploration meets material science. Students investigate the properties and behavior of artistic materials through hands-on experimentation, developing both a deeper understanding of their craft and the confidence to create, test, and solve problems in the studio.' },
+];
+
+const NAV_LINKS = [
+  { label: 'Course & Syllabus', to: '/course-and-syllabus' },
+  { label: 'Portfolio', to: '#portfolio' },
+  { label: 'Enroll & Pay', to: '/enroll-and-pay' },
+];
+
+const HANDLE_BASE = 'position:absolute;width:14px;height:14px;background:var(--al-accent);border:2px solid #fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,0.3);';
+const HANDLES = [
+  { name: 'nw', style: HANDLE_BASE + 'top:3px;left:3px;cursor:nwse-resize' },
+  { name: 'n', style: HANDLE_BASE + 'top:3px;left:50%;margin-left:-7px;cursor:ns-resize' },
+  { name: 'ne', style: HANDLE_BASE + 'top:3px;right:3px;cursor:nesw-resize' },
+  { name: 'e', style: HANDLE_BASE + 'top:50%;margin-top:-7px;right:3px;cursor:ew-resize' },
+  { name: 'se', style: HANDLE_BASE + 'bottom:3px;right:3px;cursor:nwse-resize' },
+  { name: 's', style: HANDLE_BASE + 'bottom:3px;left:50%;margin-left:-7px;cursor:ns-resize' },
+  { name: 'sw', style: HANDLE_BASE + 'bottom:3px;left:3px;cursor:nesw-resize' },
+  { name: 'w', style: HANDLE_BASE + 'top:50%;margin-top:-7px;left:3px;cursor:ew-resize' },
+];
+const DEFAULT_FRAME = { ox: 0, oy: 0, sx: 1, sy: 1 };
+const DEFAULT_FILTER = { br: 100, ct: 100, sa: 100 };
+const STORE_KEY = 'artlab.gallery.edits.v2';
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+class Component extends DCLogic {
+  state = {
+    signupEmail: '',
+    signupStatus: 'idle',
+    isLight: true,
+    editingId: null,
+    adjustingId: null,
+    hoveredId: null,
+    replacingId: null,
+    dragOverId: null,
+    frames: {},
+    removed: {},
+    images: {},
+    filters: {},
+    nat: {},
+  };
+
+  onImgLoad = (id, e) => {
+    const w = e.target.naturalWidth;
+    const h = e.target.naturalHeight;
+    if (!w || !h) return;
+    this.setState((s) => {
+      const prev = s.nat[id];
+      if (prev && prev.w === w && prev.h === h) return null;
+      return { nat: { ...s.nat, [id]: { w, h } } };
+    });
+  };
+
+  componentDidMount() {
+    try {
+      const raw = window.localStorage.getItem(STORE_KEY);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        this.setState({
+          frames: saved.frames || {},
+          removed: saved.removed || {},
+          images: saved.images || {},
+          filters: saved.filters || {},
+        });
+      }
+    } catch (err) { /* ignore */ }
+  }
+
+  persistAll = () => {
+    try {
+      window.localStorage.setItem(STORE_KEY, JSON.stringify({
+        frames: this.state.frames,
+        removed: this.state.removed,
+        images: this.state.images,
+        filters: this.state.filters,
+      }));
+    } catch (err) { /* ignore */ }
+  };
+
+  frameFor = (id) => ({ ...DEFAULT_FRAME, ...(this.state.frames[id] || {}) });
+  filterFor = (id) => ({ ...DEFAULT_FILTER, ...(this.state.filters[id] || {}) });
+
+  setFrame = (id, next) => {
+    this.setState((s) => ({ frames: { ...s.frames, [id]: next } }), this.persistAll);
+  };
+
+  toggleEdit = (id) => this.setState((s) => {
+    const editingId = s.editingId === id ? null : id;
+    return { editingId, adjustingId: editingId ? null : s.adjustingId };
+  });
+
+  toggleAdjust = (id) => this.setState((s) => {
+    const adjustingId = s.adjustingId === id ? null : id;
+    return { adjustingId, editingId: adjustingId ? null : s.editingId };
+  });
+
+  toggleRemove = (id) => this.setState((s) => {
+    const removed = { ...s.removed };
+    if (removed[id]) delete removed[id]; else removed[id] = true;
+    return { removed, editingId: removed[id] ? null : s.editingId };
+  }, this.persistAll);
+
+  resetFrame = (id) => this.setFrame(id, { ...DEFAULT_FRAME });
+
+  setFilterKey = (id, key, val) => {
+    this.setState((s) => ({
+      filters: { ...s.filters, [id]: { ...this.filterFor(id), [key]: val } },
+    }), this.persistAll);
+  };
+
+  resetFilter = (id) => {
+    this.setState((s) => {
+      const filters = { ...s.filters };
+      delete filters[id];
+      return { filters };
+    }, this.persistAll);
+  };
+
+  onHover = (id, over) => this.setState((s) => ({
+    hoveredId: over ? id : (s.hoveredId === id ? null : s.hoveredId),
+  }));
+
+  setFileInputRef = (el) => { this._fileInput = el; };
+
+  onReplaceClick = (id, e) => {
+    e.stopPropagation();
+    this.setState({ replacingId: id });
+    if (this._fileInput) this._fileInput.click();
+  };
+
+  onFileChange = (e) => {
+    const file = e.target.files && e.target.files[0];
+    const id = this.state.replacingId;
+    e.target.value = '';
+    if (!file || !id) return;
+    this.ingestFile(id, file);
+  };
+
+  ingestFile = (id, file) => {
+    if (!file.type || file.type.indexOf('image/') !== 0) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.setState((s) => ({
+        images: { ...s.images, [id]: reader.result },
+        replacingId: null,
+        removed: (() => { const r = { ...s.removed }; delete r[id]; return r; })(),
+      }), this.persistAll);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  onDragEnter = (id, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ dragOverId: id });
+  };
+
+  onDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+  };
+
+  onDragLeave = (id, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState((s) => (s.dragOverId === id ? { dragOverId: null } : null));
+  };
+
+  onDrop = (id, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ dragOverId: null });
+    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) this.ingestFile(id, file);
+  };
+
+  dragWith = (onMove) => {
+    const up = () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', up);
+  };
+
+  startMove = (id, e) => {
+    if (this.state.editingId !== id || this.state.removed[id]) return;
+    e.preventDefault();
+    const start = { x: e.clientX, y: e.clientY, f: this.frameFor(id) };
+    this.dragWith((ev) => {
+      this.setFrame(id, {
+        ...start.f,
+        ox: start.f.ox + (ev.clientX - start.x),
+        oy: start.f.oy + (ev.clientY - start.y),
+      });
+    });
+  };
+
+  startResize = (id, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const handle = e.currentTarget.getAttribute('data-handle') || 'se';
+    const frameEl = e.currentTarget.closest('[data-frame]');
+    const rect = frameEl ? frameEl.getBoundingClientRect() : { width: 300, height: 300 };
+    const start = { x: e.clientX, y: e.clientY, f: this.frameFor(id) };
+    this.dragWith((ev) => {
+      const dx = (ev.clientX - start.x) / rect.width * 2;
+      const dy = (ev.clientY - start.y) / rect.height * 2;
+      let sx = start.f.sx;
+      let sy = start.f.sy;
+      if (handle.includes('e')) sx = start.f.sx + dx;
+      if (handle.includes('w')) sx = start.f.sx - dx;
+      if (handle.includes('s')) sy = start.f.sy + dy;
+      if (handle.includes('n')) sy = start.f.sy - dy;
+      if (handle.length === 2) {
+        const k = (sx / start.f.sx + sy / start.f.sy) / 2;
+        sx = start.f.sx * k;
+        sy = start.f.sy * k;
+      }
+      this.setFrame(id, { ...start.f, sx: clamp(sx, 0.2, 6), sy: clamp(sy, 0.2, 6) });
+    });
+  };
+
+  toggleTheme = () => this.setState((s) => ({ isLight: !s.isLight }));
+
+  onChangeSignupEmail = (e) => this.setState({ signupEmail: e.target.value });
+
+  onSubmitSignup = (e) => {
+    e.preventDefault();
+    this.setState({ signupStatus: 'sending' });
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'syllabus', email: this.state.signupEmail }),
+    })
+      .then((res) => (res.ok ? this.setState({ signupStatus: 'sent' }) : Promise.reject()))
+      .catch(() => this.setState({ signupStatus: 'error' }));
+  };
+
+  renderVals() {
+    const { editingId, adjustingId, hoveredId, dragOverId, removed, images, nat } = this.state;
+    const FA = 4 / 3;
+    const gallery = GALLERY.map((g) => {
+      const isEditing = editingId === g.id;
+      const isAdjusting = adjustingId === g.id;
+      const isEmpty = !!removed[g.id];
+      const isDragOver = dragOverId === g.id;
+      const showCtl = hoveredId === g.id || isEditing || isAdjusting;
+      const f = this.frameFor(g.id);
+      const filter = this.filterFor(g.id);
+      const n = nat[g.id];
+      const ia = n ? n.w / n.h : FA;
+      const coverW = ia >= FA ? 100 * ia / FA : 100;
+      const coverH = ia >= FA ? 100 : 100 * FA / ia;
+      const fitS = ia >= FA ? FA / ia : ia / FA;
+      const btnStyle = 'appearance:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;background:rgba(0,0,0,.65);color:#fff;font-size:11px;font-family:inherit;backdrop-filter:blur(6px)';
+      return {
+        ...g,
+        src: images[g.id] || g.src,
+        isEditing,
+        isAdjusting,
+        isEmpty,
+        hasImage: !isEmpty,
+        filter,
+        handles: HANDLES,
+        frameStyle: `position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--al-surface);touch-action:none;cursor:${isEmpty ? 'default' : isEditing ? 'move' : 'default'};${isDragOver ? 'outline:2px solid var(--al-accent);outline-offset:-2px' : ''}`,
+        imgStyle: `position:absolute;left:50%;top:50%;width:${coverW * f.sx}%;height:${coverH * f.sy}%;max-width:none;display:block;user-select:none;cursor:${isEditing ? 'grab' : 'default'};transform:translate(-50%,-50%) translate(${f.ox}px,${f.oy}px);filter:brightness(${filter.br}%) contrast(${filter.ct}%) saturate(${filter.sa}%)`,
+        zoomPct: Math.round(f.sx * 100),
+        zoomBarStyle: 'position:absolute;left:8px;right:8px;bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:8px;background:rgba(0,0,0,.7);border-radius:8px;z-index:3;backdrop-filter:blur(6px)',
+        editLabel: isEditing ? 'Done' : 'Edit',
+        removeLabel: isEmpty ? 'Restore' : 'Remove',
+        ctlStyle: `position:absolute;top:8px;right:8px;display:flex;gap:6px;opacity:${showCtl ? 1 : 0};pointer-events:${showCtl ? 'auto' : 'none'};transition:opacity .12s;z-index:2`,
+        btnStyle,
+        adjustPanelStyle: 'position:absolute;top:44px;right:8px;display:flex;flex-direction:column;gap:8px;width:150px;padding:10px;background:rgba(0,0,0,.75);border-radius:8px;color:#fff;font-size:11px;z-index:3;backdrop-filter:blur(6px)',
+        resetBtnStyle: 'align-self:flex-end;appearance:none;border:0;border-radius:5px;padding:4px 8px;cursor:pointer;background:rgba(255,255,255,.15);color:#fff;font-size:11px;font-family:inherit',
+        onEnter: () => this.onHover(g.id, true),
+        onLeave: () => this.onHover(g.id, false),
+        onDragEnter: (e) => this.onDragEnter(g.id, e),
+        onDragOver: this.onDragOver,
+        onDragLeave: (e) => this.onDragLeave(g.id, e),
+        onDrop: (e) => this.onDrop(g.id, e),
+        onImgLoad: (e) => this.onImgLoad(g.id, e),
+        onZoom: (e) => {
+          const v = clamp(parseFloat(e.target.value) / 100, 0.2, 6);
+          this.setFrame(g.id, { ...this.frameFor(g.id), sx: v, sy: v });
+        },
+        onFit: (e) => { e.stopPropagation(); this.setFrame(g.id, { ox: 0, oy: 0, sx: fitS, sy: fitS }); },
+        onFill: (e) => { e.stopPropagation(); this.setFrame(g.id, { ...DEFAULT_FRAME }); },
+        onResetFrame: (e) => { e.stopPropagation(); this.resetFrame(g.id); },
+        onMoveDown: (e) => this.startMove(g.id, e),
+        onHandleDown: (e) => this.startResize(g.id, e),
+        onReplace: (e) => this.onReplaceClick(g.id, e),
+        onToggleEdit: (e) => { e.stopPropagation(); if (!isEmpty) this.toggleEdit(g.id); },
+        onToggleAdjust: (e) => { e.stopPropagation(); if (!isEmpty) this.toggleAdjust(g.id); },
+        onToggleRemove: (e) => { e.stopPropagation(); this.toggleRemove(g.id); },
+        onBr: (e) => this.setFilterKey(g.id, 'br', parseFloat(e.target.value)),
+        onCt: (e) => this.setFilterKey(g.id, 'ct', parseFloat(e.target.value)),
+        onSa: (e) => this.setFilterKey(g.id, 'sa', parseFloat(e.target.value)),
+        onResetFilter: (e) => { e.stopPropagation(); this.resetFilter(g.id); },
+      };
+    });
+    const isLight = this.state.isLight;
+    const rootStyle = isLight
+      ? "min-height:100vh;font-family:'Inter',sans-serif;background:var(--al-bg);color:var(--al-text);--al-bg:#f7f6f2;--al-surface:#ece9e2;--al-text:#181614;--al-muted:#5c5954;--al-divider:#dedad2;--al-divider-strong:#b8b2a5;--al-accent:#cc4125;--al-band-bg:#1a1917;--al-band-text:#f7f6f2;--al-band-muted:#b9b6ae"
+      : "min-height:100vh;font-family:'Inter',sans-serif;background:var(--al-bg);color:var(--al-text);--al-bg:#15141a;--al-surface:#232028;--al-text:#f2f0eb;--al-muted:#a8a4a0;--al-divider:#332f38;--al-divider-strong:#4a4550;--al-accent:#e2573a;--al-band-bg:#f2f0eb;--al-band-text:#15141a;--al-band-muted:#5c5954";
+    const themeIcon = isLight
+      ? React.createElement('svg', { width: 16, height: 16, viewBox: '0 0 256 256', fill: 'currentColor' },
+          React.createElement('path', { d: 'M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z' }))
+      : React.createElement('svg', { width: 16, height: 16, viewBox: '0 0 256 256', fill: 'currentColor' },
+          React.createElement('path', { d: 'M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z' }));
+    return {
+      rootStyle,
+      themeIcon,
+      toggleTheme: this.toggleTheme,
+      navLinks: NAV_LINKS,
+      features: FEATURES,
+      gallery,
+      setFileInputRef: this.setFileInputRef,
+      onFileChange: this.onFileChange,
+      signupEmail: this.state.signupEmail,
+      onChangeSignupEmail: this.onChangeSignupEmail,
+      onSubmitSignup: this.onSubmitSignup,
+      signupSent: this.state.signupStatus === 'sent',
+      signupNotSent: this.state.signupStatus !== 'sent',
+      signupSending: this.state.signupStatus === 'sending',
+      signupError: this.state.signupStatus === 'error',
+      signupButtonLabel: this.state.signupStatus === 'sending' ? 'Sending…' : 'Request Syllabus',
+      year: new Date().getFullYear(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

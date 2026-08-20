@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <title>Materials & Supplies — Art Lab Studio</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    a.al-link { color: #181614; text-decoration: none; }
+    a.al-link:hover { color: #cc4125; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;font-family:'Inter',sans-serif;background:#f7f6f2;color:#181614">
+
+  <header style="position:sticky;top:0;z-index:40;background:#f7f6f2;border-bottom:1px solid #dedad2">
+    <nav style="max-width:1280px;margin:0 auto;padding:20px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <a href="/" class="al-link" style="font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.01em">ART LAB STUDIO</a>
+      <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+        <a href="/" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Home</a>
+        <a href="/course-and-syllabus" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Course & Syllabus</a>
+        <a href="/enroll-and-pay" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Enroll & Pay</a>
+      </div>
+    </nav>
+  </header>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,72px) 48px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Materials & Supplies</div>
+    <h1 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(40px,7vw,80px);line-height:0.95;letter-spacing:-0.01em;margin:0 0 24px;text-transform:uppercase;max-width:18ch">What to bring, what we sell</h1>
+    <p style="font-size:18px;line-height:1.6;margin:0;color:#5c5954;max-width:64ch">Most supplies are yours to source. A few specialty materials — geopolymers and cements — are available to buy directly through the studio for the units that need them.</p>
+  </section>
+
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+    <section style="max-width:1280px;margin:0 auto;padding:56px clamp(20px,5vw,72px)">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3.5vw,32px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">{{ g.title }}</h2>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:{{ g.tagColor }};background:{{ g.tagBg }};padding:6px 12px;border-radius:3px">{{ g.tag }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:20px">
+        <sc-for list="{{ g.items }}" as="item" hint-placeholder-count="4">
+          <div style="border:1px solid #dedad2;border-radius:3px;padding:20px;display:flex;flex-direction:column;gap:12px">
+            <div style="aspect-ratio:4/3;overflow:hidden;background:#ece9e2;border-radius:2px">
+              <image-slot id="mat-{{ item.id }}" shape="rect" placeholder="Product photo"></image-slot>
+            </div>
+            <div style="font-size:15px;font-weight:600">{{ item.name }}</div>
+            <p style="font-size:13px;line-height:1.5;color:#5c5954;margin:0;flex:1">{{ item.note }}</p>
+            <sc-if value="{{ item.buyable }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #ece9e2">
+                <span style="font-size:14px;font-weight:700">{{ item.price }}</span>
+                <button type="button" onClick="{{ addToCart }}" data-id="{{ item.id }}" style="background:{{ item.cartBg }};color:#fff;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:9px 14px;border:none;border-radius:3px;cursor:pointer">{{ item.cartLabel }}</button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 96px">
+    <div style="background:#1a1917;border-radius:4px;padding:clamp(32px,6vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <div>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(22px,3.2vw,32px);letter-spacing:-0.01em;margin:0 0 8px;text-transform:uppercase;color:#f7f6f2">{{ cartCount }} item(s) in cart</h2>
+        <p style="font-size:14px;color:#b9b6ae;margin:0">Cart checkout is a placeholder for this wireframe — full purchase flow comes next.</p>
+      </div>
+      <a href="./downloads/materials-list.pdf" download="" style="background:#cc4125;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none;white-space:nowrap">Download Full List (PDF)</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #dedad2">
+    <div style="max-width:1280px;margin:0 auto;padding:32px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font-size:12px;color:#5c5954">© {{ year }} Art Lab Studio</span>
+      <a href="/" class="al-link" style="font-size:12px;letter-spacing:0.04em;color:#5c5954">Back to home</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS_BASE = [
+  {
+    title: 'Studio Basics', tag: 'Self-purchase', tagColor: '#5c5954', tagBg: '#ece9e2',
+    items: [
+      { id: 1, name: 'Sketchbook & pencils', note: 'Any hardback sketchbook, HB–4B pencil set.', buyable: false },
+      { id: 2, name: 'Apron / smock', note: 'Full-coverage, washable.', buyable: false },
+      { id: 3, name: 'Nitrile gloves (box)', note: 'For pigment and binder handling.', buyable: false },
+    ],
+  },
+  {
+    title: 'Custom Pigments & Binders', tag: 'Self-purchase', tagColor: '#5c5954', tagBg: '#ece9e2',
+    items: [
+      { id: 4, name: 'Raw pigment set', note: 'Ochre, umber, and mineral pigments used across Units 1–3.', buyable: false },
+      { id: 5, name: 'Rabbit-skin glue / casein', note: 'Binder base for early units.', buyable: false },
+    ],
+  },
+  {
+    title: 'Geopolymers & Cements', tag: 'Available in studio shop', tagColor: '#cc4125', tagBg: '#f7e2dc',
+    items: [
+      { id: 6, name: 'Geopolymer casting kit', note: 'Pre-measured for Unit 4 forms — shipping raw material is impractical for most students.', buyable: true, price: '$38', cartLabel: 'Add to Cart' },
+      { id: 7, name: 'White cement, 5lb', note: 'Studio-tested mix for sculptural casting.', buyable: true, price: '$22', cartLabel: 'Add to Cart' },
+    ],
+  },
+];
+
+class Component extends DCLogic {
+  state = { cart: {} };
+
+  addToCart = (e) => {
+    const id = Number(e.currentTarget.getAttribute('data-id'));
+    this.setState((s) => ({ cart: { ...s.cart, [id]: true } }));
+  };
+
+  renderVals() {
+    const groups = GROUPS_BASE.map((g) => ({
+      ...g,
+      items: g.items.map((item) => item.buyable
+        ? { ...item, cartLabel: this.state.cart[item.id] ? 'Added' : 'Add to Cart', cartBg: this.state.cart[item.id] ? '#1a1917' : '#cc4125' }
+        : item),
+    }));
+    const cartCount = Object.keys(this.state.cart).length;
+    return { groups, addToCart: this.addToCart, cartCount, year: new Date().getFullYear() };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <title>Course &amp; Syllabus — Art Lab Studio</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    a.al-link { color: #181614; text-decoration: none; }
+    a.al-link:hover { color: #cc4125; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;font-family:'Inter',sans-serif;background:#f7f6f2;color:#181614">
+
+  <header style="position:sticky;top:0;z-index:40;background:#f7f6f2;border-bottom:1px solid #dedad2">
+    <nav style="max-width:1280px;margin:0 auto;padding:20px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <a href="/" class="al-link" style="font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.01em">ART LAB STUDIO</a>
+      <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+        <a href="/" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Home</a>
+        <a href="/enroll-and-pay" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Enroll &amp; Pay</a>
+      </div>
+    </nav>
+  </header>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,72px) 48px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Course &amp; Syllabus</div>
+    <h1 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(40px,7vw,84px);line-height:0.95;letter-spacing:-0.01em;margin:0 0 24px;text-transform:uppercase;max-width:16ch">The full breakdown</h1>
+    <p style="font-size:18px;line-height:1.6;margin:0;color:#5c5954;max-width:64ch">Advanced fine arts, taught as material science. Students engineer their own pigments and binders, testing historic recipes against modern chemistry, then apply what they build to sculptural and painted work. Below is the unit-by-unit path — read it here, or download the full syllabus.</p>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px);display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,2.2fr);gap:clamp(24px,5vw,72px)">
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3vw,32px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">About the course</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:70ch">
+      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is an immersive, hands-on studio course built around a simple idea: students don't just use materials—they learn to understand them. Through experimentation, artmaking, and exploration, students discover how materials are made, how they behave, where they come from, and how artists have used them to create meaning throughout history.</p>
+      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Throughout the fall semester, students move through a range of studio experiences—from drawing and observation to making their own paints, exploring plaster and cementitious materials, experimenting with layered surfaces, and developing a final body of work. Some classes are focused on learning new techniques, while others function as a teacher led open studio with a focussed work session, giving students time to experiment, develop ideas, and take their projects further.</p>
+      
+      <div style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty"><p dir="auto" style="white-space-collapse: preserve;">Art Lab: Foundations is designed primarily for high school students and is also an excellent fit for motivated middle school students who enjoy making, experimenting, and exploring how things work. No advanced art experience is required—students build their skills as they go.</p></div>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 0 32px">
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,36px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">EXAMPLE CURRICULUM UNITS</h2>
+      <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125">16 WEEK SEMMESTERS</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <sc-for list="{{ units }}" as="u" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:28px 0;border-top:1px solid #dedad2;align-items:start">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:14px;color:#cc4125">{{ u.range }}</div>
+          <div style="aspect-ratio:4/3;overflow:hidden;background:#ece9e2;border-radius:3px">
+            <image-slot id="unit-{{ u.id }}" shape="rect" placeholder="Photo of student work from this unit"></image-slot>
+          </div>
+          <div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:10px">{{ u.title }}</div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
+              <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#ece9e2;padding:5px 10px;border-radius:2px">{{ u.weeks }}</span>
+              <span style="font-size:12px;color:#5c5954;font-variant-numeric:tabular-nums">{{ u.format }}</span>
+            </div>
+            <p style="font-size:15px;line-height:1.6;color:#5c5954;margin:0">{{ u.body }}</p>
+            <sc-if value="{{ u.assignmentUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ u.assignmentUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#cc4125;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:11px 20px;border-radius:3px;text-decoration:none" style-hover="background:#a83519">
+                <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path></svg>
+                View assignment
+              </a>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:24px 0;border-top:1px solid #181614;align-items:baseline">
+        <div style="font-family:'Archivo Black',sans-serif;font-size:14px">TOTAL</div>
+        <div style="font-size:15px;font-weight:700">16 weeks</div>
+        <div style="font-size:15px;color:#5c5954">10× 1-hr sessions + 2× 2-hr studio days</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 96px">
+    <div style="background:#1a1917;border-radius:4px;padding:clamp(32px,6vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <div>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3.5vw,36px);letter-spacing:-0.01em;margin:0 0 8px;text-transform:uppercase;color:#f7f6f2">Get the full syllabus PDF</h2>
+        <p style="font-size:14px;color:#b9b6ae;margin:0">Grading policy, weekly schedule, and material safety notes included.</p>
+      </div>
+      <a href="./downloads/syllabus.pdf" download="" style="background:#cc4125;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none;white-space:nowrap">Download Syllabus</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #dedad2">
+    <div style="max-width:1280px;margin:0 auto;padding:32px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font-size:12px;color:#5c5954">© {{ year }} Art Lab Studio</span>
+      <a href="/" class="al-link" style="font-size:12px;letter-spacing:0.04em;color:#5c5954">Back to home</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const UNITS = [
+  { id: 1, range: 'Unit 01', title: 'Oberservation & Drawing', weeks: '2 weeks', format: '1-hr', body: 'Drawing and observation as the foundation for everything that follows.', assignmentUrl: './downloads/unit-1-assignment.pdf' },
+  { id: 2, range: 'Unit 02', title: 'Handmade Pigments, Paint, and Color Studies', weeks: '3 weeks', format: '1-hr', body: 'Students make their own paints, working from pigment and binder to a usable medium.  They will also learn several principles of color theory, ' },
+  { id: 3, range: 'Unit 03', title: 'Geopolymer & Cementitious Materials and Sculpting', weeks: '5 weeks', format: '1-hr ×3 + 2-hr studio day (mix & cast)', body: 'Plaster, geopolymer, and cement, ending in a studio day for casting.' },
+  { id: 4, range: 'Unit 04', title: 'Layers, Light & Texture', weeks: '4 weeks', format: '1-hr', body: 'Experiments with light and layered surfaces built on the materials made earlier in the course.' },
+  { id: 5, range: 'Unit 05', title: 'Final Project', weeks: '2 weeks', format: '2-hr studio day (plan + make)', body: 'A single extended session to plan and make a final piece.' },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    return { units: UNITS, year: new Date().getFullYear() };
+  }
+}
+
+</script>
+</body>
+</html>

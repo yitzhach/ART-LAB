@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <title>Enroll &amp; Pay — Art Lab Studio</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    a.al-link { color: #181614; text-decoration: none; }
+    a.al-link:hover { color: #cc4125; }
+    .al-input::placeholder { color: #8a8a86; }
+    .al-input { background:#fff;color:#181614;border:1px solid #dedad2;border-radius:3px;padding:12px 14px;font-size:14px;font-family:inherit;width:100%; }
+    .al-input:focus-visible { outline: 2px solid #cc4125; outline-offset: 2px; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;font-family:'Inter',sans-serif;background:#f7f6f2;color:#181614">
+
+  <header style="position:sticky;top:0;z-index:40;background:#f7f6f2;border-bottom:1px solid #dedad2">
+    <nav style="max-width:1280px;margin:0 auto;padding:20px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <a href="/" class="al-link" style="font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.01em">ART LAB STUDIO</a>
+      <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+        <a href="/" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Home</a>
+        <a href="/course-and-syllabus" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Course &amp; Syllabus</a>
+      </div>
+    </nav>
+  </header>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,72px) 48px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Enrollment 2026</div>
+    <h1 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(40px,7vw,72px);line-height:0.95;letter-spacing:-0.01em;margin:0 0 16px;text-transform:uppercase;max-width:18ch">Enroll &amp; pay</h1>
+    <p style="font-size:18px;line-height:1.6;margin:0;color:#5c5954;max-width:60ch">Academic Session: Sept–May · Grades 10–12 · High School Fine Arts Credit</p>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:56px clamp(20px,5vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:64px">
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div style="grid-column:1/-1;padding:48px;border:1px solid #dedad2;border-radius:3px;text-align:center">
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:28px;margin:0 0 12px;text-transform:uppercase">Enrollment received</h2>
+        <p style="font-size:15px;color:#5c5954;margin:0">We'll follow up by email to confirm payment and next steps.</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+    <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:22px;margin:0;text-transform:uppercase">Student &amp; Parent Info</h2>
+      <div>
+        <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Student name</label>
+        <input class="al-input" type="text" required="" placeholder="Full name" value="{{ studentName }}" onChange="{{ onChangeStudentName }}">
+      </div>
+      <div>
+        <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Grade</label>
+        <input class="al-input" type="text" required="" placeholder="10, 11, or 12" value="{{ grade }}" onChange="{{ onChangeGrade }}">
+      </div>
+      <div>
+        <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Parent / guardian name</label>
+        <input class="al-input" type="text" required="" placeholder="Full name" value="{{ parentName }}" onChange="{{ onChangeParentName }}">
+      </div>
+      <div>
+        <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Email</label>
+        <input class="al-input" type="email" required="" placeholder="you@email.com" value="{{ email }}" onChange="{{ onChangeEmail }}">
+      </div>
+      <div>
+        <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Phone</label>
+        <input class="al-input" type="tel" placeholder="(555) 555-5555" value="{{ phone }}" onChange="{{ onChangePhone }}">
+      </div>
+
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:22px;margin:16px 0 0;text-transform:uppercase">Materials</h2>
+      <p style="font-size:14px;line-height:1.6;color:#5c5954;margin:0">Most supplies are family-provided; a supply list is sent before the first class. The Session 3 sculpting unit uses geopolymer, cement, and plaster, which we can ship to you.</p>
+      <label style="display:flex;align-items:center;gap:10px;border:1px solid #dedad2;border-radius:3px;padding:14px;cursor:pointer;font-size:14px">
+        <input type="checkbox" checked="{{ kitIncluded }}" onChange="{{ toggleKit }}">
+        Add geopolymer/cement/plaster casting kit, shipped — $75
+      </label>
+
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:22px;margin:16px 0 0;text-transform:uppercase">Add-On: Private Lesson or Family Class</h2>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <label style="display:flex;align-items:center;gap:10px;border:1px solid #dedad2;border-radius:3px;padding:14px;cursor:pointer;font-size:14px">
+          <input type="radio" name="addOnChoice" checked="{{ addOnNone }}" onChange="{{ setAddOnNone }}">
+          No private lesson or family class
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;border:1px solid #dedad2;border-radius:3px;padding:14px;cursor:pointer;font-size:14px">
+          <input type="radio" name="addOnChoice" checked="{{ addOn1hr }}" onChange="{{ setAddOn1hr }}">
+          1 hour — $80
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;border:1px solid #dedad2;border-radius:3px;padding:14px;cursor:pointer;font-size:14px">
+          <input type="radio" name="addOnChoice" checked="{{ addOn2hr }}" onChange="{{ setAddOn2hr }}">
+          2 hours — $135
+        </label>
+      </div>
+      <sc-if value="{{ hasAddOn }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:10px;padding-left:16px">
+        <label style="display:flex;align-items:center;gap:10px;border:1px solid #dedad2;border-radius:3px;padding:14px;cursor:pointer;font-size:14px">
+          <input type="radio" name="lessonTypeChoice" checked="{{ lessonTypePrivate }}" onChange="{{ setLessonTypePrivate }}">
+          Private 1-on-1 lesson
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;border:1px solid #dedad2;border-radius:3px;padding:14px;cursor:pointer;font-size:14px">
+          <input type="radio" name="lessonTypeChoice" checked="{{ lessonTypeFamily }}" onChange="{{ setLessonTypeFamily }}">
+          Family class
+        </label>
+      </div>
+      </sc-if>
+
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:22px;margin:16px 0 0;text-transform:uppercase">Payment</h2>
+      <div>
+        <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Card number</label>
+        <input class="al-input" type="text" required="" placeholder="•••• •••• •••• ••••">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">Expiry</label>
+          <input class="al-input" type="text" required="" placeholder="MM/YY">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#5c5954;margin-bottom:6px">CVC</label>
+          <input class="al-input" type="text" required="" placeholder="123">
+        </div>
+      </div>
+      <p style="font-size:12px;color:#8a8a86;margin:0">Payment fields are a wireframe placeholder — a real processor (e.g. Stripe) connects here later.</p>
+      <button type="submit" disabled="{{ enrollSending }}" style="background:#cc4125;color:#fff;border:none;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 24px;border-radius:3px;cursor:pointer;margin-top:8px">{{ enrollButtonLabel }}</button>
+      <sc-if value="{{ enrollError }}" hint-placeholder-val="{{ false }}">
+      <p style="color:#cc4125;font-size:12px;margin:0">Your enrollment notice couldn't be sent automatically — email <a href="mailto:admissions@isaacandersonart.com" style="color:#cc4125">admissions@isaacandersonart.com</a> to confirm.</p>
+      </sc-if>
+    </form>
+    </sc-if>
+
+    <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="border:1px solid #dedad2;border-radius:3px;padding:32px;margin-bottom:24px">
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:18px;margin:0 0 20px;text-transform:uppercase">Order Summary</h2>
+        <div style="display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-bottom:1px solid #ece9e2">
+          <span>Tuition — Fall Session</span><span style="font-weight:700">$250</span>
+        </div>
+        <sc-if value="{{ kitIncluded }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-bottom:1px solid #ece9e2;color:#5c5954">
+          <span>Optional casting kit — Session 3</span><span style="font-weight:700">$75</span>
+        </div>
+        </sc-if>
+        <sc-if value="{{ hasAddOn }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-bottom:1px solid #ece9e2;color:#5c5954">
+          <span>{{ addOnLabel }}</span><span style="font-weight:700">{{ addOnAmount }}</span>
+        </div>
+        </sc-if>
+        <div style="display:flex;justify-content:space-between;font-size:16px;padding:16px 0 0;font-weight:700">
+          <span>Total due today</span><span>{{ totalDueToday }}</span>
+        </div>
+      </div>
+      <div style="border:1px solid #dedad2;border-radius:3px;padding:32px;margin-bottom:24px">
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:18px;margin:0 0 20px;text-transform:uppercase">Supplies</h2>
+        <p style="font-size:13px;line-height:1.6;color:#5c5954;margin:0">Standard supplies (paper, pencils, paint, brushes) are family-provided; a supply list is sent before the first class. The optional Session 3 casting kit, if added, ships before that session.</p>
+      </div>
+      <div style="background:#1a1917;border-radius:4px;padding:28px">
+        <h3 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:16px;margin:0 0 8px;text-transform:uppercase;color:#f7f6f2">Questions before you pay?</h3>
+        <p style="font-size:13px;color:#b9b6ae;margin:0">Email <a href="mailto:admissions@isaacandersonart.com" style="color:#e2573a">admissions@isaacandersonart.com</a></p>
+      </div>
+    </div>
+    </sc-if>
+  </section>
+
+  <footer style="border-top:1px solid #dedad2">
+    <div style="max-width:1280px;margin:0 auto;padding:32px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font-size:12px;color:#5c5954">© {{ year }} Art Lab Studio</span>
+      <a href="/" class="al-link" style="font-size:12px;letter-spacing:0.04em;color:#5c5954">Back to home</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false, kitIncluded: false, addOn: 'none', lessonType: 'private', studentName: '', grade: '', parentName: '', email: '', phone: '', sendStatus: 'idle' };
+
+  onChangeStudentName = (e) => this.setState({ studentName: e.target.value });
+  onChangeGrade = (e) => this.setState({ grade: e.target.value });
+  onChangeParentName = (e) => this.setState({ parentName: e.target.value });
+  onChangeEmail = (e) => this.setState({ email: e.target.value });
+  onChangePhone = (e) => this.setState({ phone: e.target.value });
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const kitCost = this.state.kitIncluded ? 75 : 0;
+    const addOnCost = this.state.addOn === '1hr' ? 80 : this.state.addOn === '2hr' ? 135 : 0;
+    const payload = {
+      type: 'enrollment',
+      studentName: this.state.studentName,
+      grade: this.state.grade,
+      parentName: this.state.parentName,
+      email: this.state.email,
+      phone: this.state.phone,
+      kitIncluded: this.state.kitIncluded,
+      hasAddOn: addOnCost > 0,
+      addOnLabel: (this.state.lessonType === 'family' ? 'Family class — ' : 'Private lesson — ') + (this.state.addOn === '1hr' ? '1 hour' : '2 hours'),
+      addOnAmount: '$' + addOnCost,
+      totalDueToday: '$' + (250 + kitCost + addOnCost),
+    };
+    this.setState({ submitted: true, sendStatus: 'sending' });
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => this.setState({ sendStatus: res.ok ? 'sent' : 'error' }))
+      .catch(() => this.setState({ sendStatus: 'error' }));
+  };
+
+  toggleKit = () => this.setState(s => ({ kitIncluded: !s.kitIncluded }));
+  setAddOnNone = () => this.setState({ addOn: 'none' });
+  setAddOn1hr = () => this.setState({ addOn: '1hr' });
+  setAddOn2hr = () => this.setState({ addOn: '2hr' });
+  setLessonTypePrivate = () => this.setState({ lessonType: 'private' });
+  setLessonTypeFamily = () => this.setState({ lessonType: 'family' });
+
+  renderVals() {
+    const kitCost = this.state.kitIncluded ? 75 : 0;
+    const baseTotal = 250 + kitCost;
+    const addOnCost = this.state.addOn === '1hr' ? 80 : this.state.addOn === '2hr' ? 135 : 0;
+    return {
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      onSubmit: this.onSubmit,
+      studentName: this.state.studentName,
+      grade: this.state.grade,
+      parentName: this.state.parentName,
+      email: this.state.email,
+      phone: this.state.phone,
+      onChangeStudentName: this.onChangeStudentName,
+      onChangeGrade: this.onChangeGrade,
+      onChangeParentName: this.onChangeParentName,
+      onChangeEmail: this.onChangeEmail,
+      onChangePhone: this.onChangePhone,
+      enrollSending: this.state.sendStatus === 'sending',
+      enrollError: this.state.sendStatus === 'error',
+      enrollButtonLabel: this.state.sendStatus === 'sending' ? 'Submitting…' : 'Submit & Pay',
+      year: new Date().getFullYear(),
+      kitIncluded: this.state.kitIncluded,
+      toggleKit: this.toggleKit,
+      addOnNone: this.state.addOn === 'none',
+      addOn1hr: this.state.addOn === '1hr',
+      addOn2hr: this.state.addOn === '2hr',
+      setAddOnNone: this.setAddOnNone,
+      setAddOn1hr: this.setAddOn1hr,
+      setAddOn2hr: this.setAddOn2hr,
+      lessonTypePrivate: this.state.lessonType === 'private',
+      lessonTypeFamily: this.state.lessonType === 'family',
+      setLessonTypePrivate: this.setLessonTypePrivate,
+      setLessonTypeFamily: this.setLessonTypeFamily,
+      hasAddOn: addOnCost > 0,
+      addOnLabel: (this.state.lessonType === 'family' ? 'Family class — ' : 'Private lesson — ') + (this.state.addOn === '1hr' ? '1 hour' : '2 hours'),
+      addOnAmount: '$' + addOnCost,
+      totalDueToday: '$' + (baseTotal + addOnCost),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
