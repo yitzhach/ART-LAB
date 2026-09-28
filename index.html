@@ -71,7 +71,7 @@
     <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(28px,4vw,42px);letter-spacing:-0.01em;margin:0 0 12px;text-transform:uppercase;color:var(--al-text)">Selected student work</h2>
     <p style="font-size:15.5px;color:var(--al-muted);max-width:56ch;margin:0 0 14px">A record of process and material experimentation from the studio.</p>
     <p style="font-size:15.5px;line-height:1.65;color:var(--al-muted);max-width:60ch;margin:0 0 40px;text-wrap:pretty">Every student will have the option of their own portfolio page — a place to feature their work as it develops through the semester, and to share it with family and friends.</p>
-    <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:clamp(28px,3.5vw,44px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:clamp(28px,3.5vw,44px)">
       <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
         <div>
           <div data-frame="" style="{{ g.frameStyle }}" onMouseEnter="{{ g.onEnter }}" onMouseLeave="{{ g.onLeave }}" onDragEnter="{{ g.onDragEnter }}" onDragOver="{{ g.onDragOver }}" onDragLeave="{{ g.onDragLeave }}" onDrop="{{ g.onDrop }}">
@@ -189,11 +189,13 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 const GALLERY = [
-  { id: 102, title: 'Observational Drawing & Handmade Paint Study', medium: 'UnitS 1-2 · SEEING & DRAWING · USING Pigment & Binder', hue: 20, src: './images/gallery-102-blend.png' },
-  { id: 103, title: 'Geopolymer & Cementitious Materials', medium: 'Unit 3  · Geopolymer and Cementitious Materials', hue: 60, src: './images/gallery-103-geopolymer-bowl.jpeg' },
-  { id: 104, title: 'Layers, Light, and Textures', medium: 'Unit 4 · Experiments with layered and 3D surfaces', hue: 90, src: './images/gallery-104-raking-light.jpg' },
-  { id: 106, title: 'Final Project', medium: 'Unit 5 · Studio Day', hue: 340 },
-].map((g) => ({ ...g, src: g.src || `./images/gallery-${g.id}.png` }));
+  { id: 101, title: 'Observational Drawing', medium: 'Unit 1 · Seeing & Drawing', src: './images/gallery-101.png' },
+  { id: 102, title: 'Handmade Paint Study', medium: 'Unit 2 · Pigment & Binder', src: './images/gallery-102.png' },
+  { id: 103, title: 'Color Chart', medium: 'Unit 2 · Handmade Paint', src: './images/gallery-103.png' },
+  { id: 104, title: 'Cast Form', medium: 'Unit 3 · Geopolymer & Cementitious', src: './images/gallery-104.png' },
+  { id: 105, title: 'Layered Surface', medium: 'Unit 4 · Surface, Light & Layer', src: './images/gallery-105.png' },
+  { id: 106, title: 'Final Project', medium: 'Unit 5 · Studio Day', src: './images/gallery-106.png' },
+];
 
 const FEATURES = [
   { title: 'Custom Pigments & Binders', body: 'Engineering custom pigments and binders by synthesizing historic methodologies with modern applications. Students transition from consumers of art supplies to creators of their own unique media.' },

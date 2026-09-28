@@ -9,19 +9,14 @@
 <x-dc>
 
 <helmet>
-  <title>Full Syllabus — Art Lab Studio</title>
+  <title>Full Syllabus: Art Lab Foundations — Art Lab Studio</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <script src="./image-slot.js"></script>
   <style>
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     a.al-link { color: #181614; text-decoration: none; }
     a.al-link:hover { color: #cc4125; }
-    a.al-chip { text-decoration: none; }
-    a.al-chip:hover { filter: brightness(0.92); }
   </style>
 </helmet>
 
@@ -32,82 +27,340 @@
       <a href="/" class="al-link" style="font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.01em">ART LAB STUDIO</a>
       <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
         <a href="/" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Home</a>
-        <a href="/course-and-syllabus" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Course &amp; Syllabus</a>
+        <a href="/course-and-syllabus" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Course</a>
+        <a href="/syllabus" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125">Syllabus</a>
         <a href="/enroll-and-pay" class="al-link" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Enroll &amp; Pay</a>
       </div>
     </nav>
   </header>
 
-  <section style="max-width:1280px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,72px) 48px">
-    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Full Syllabus</div>
-    <h1 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(40px,7vw,84px);line-height:0.95;letter-spacing:-0.01em;margin:0 0 24px;text-transform:uppercase;max-width:20ch">Art Lab: Foundations</h1>
-    <p style="font-size:18px;line-height:1.6;margin:0;color:#5c5954;max-width:64ch">The complete, week-by-week syllabus for the fall semester — grading policy, weekly schedule, and material safety notes included. Jump to a unit below, or download a copy for your records.</p>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 16px">
-    <div style="display:flex;flex-wrap:wrap;gap:10px">
-      <sc-for list="{{ units }}" as="u" hint-placeholder-count="5">
-        <a href="#unit-{{ u.id }}" class="al-chip" style="background:{{ u.color }};color:#fff;font-size:12px;font-weight:800;letter-spacing:0.04em;padding:9px 16px;border-radius:20px;white-space:nowrap">{{ u.range }} · {{ u.weeks }}</a>
-      </sc-for>
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(40px,7vw,88px) clamp(20px,5vw,72px) 48px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Full syllabus / Fall semester</div>
+    <h1 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(44px,8vw,96px);line-height:0.98;letter-spacing:-0.01em;margin:0 0 18px;text-transform:uppercase">Art Lab: Foundations</h1>
+    <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(16px,2vw,22px);margin:0 0 20px">Seeing, making &amp; meaning</div>
+    <p style="font-size:18px;line-height:1.6;margin:0;color:#5c5954;max-width:64ch">A mixed-media fine arts course built around observation, experimentation, and a deeper understanding of materials and process.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
+      <a href="./downloads/syllabus.pdf" download="" style="display:inline-flex;align-items:center;gap:8px;background:#cc4125;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none">Download PDF</a>
+      <a href="#weeks" style="background:transparent;border:1px solid #181614;color:#181614;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none">Jump to the weeks</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:56px;background:#1a1917;color:#b9b6ae;border-radius:4px;padding:clamp(24px,4vw,40px)">
+      <div><span style="display:block;color:#f7f6f2;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Weekly class</span><span style="font-size:14px;line-height:1.55">About one hour, live online, with a short demo video before each session</span></div>
+      <div><span style="display:block;color:#f7f6f2;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Between classes</span><span style="font-size:14px;line-height:1.55">Project work, plus 5–10 minutes of sketchbook practice 4–6 days a week</span></div>
+      <div><span style="display:block;color:#f7f6f2;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Final project</span><span style="font-size:14px;line-height:1.55">A month of self-directed work, presented to the class</span></div>
+      <div><span style="display:block;color:#f7f6f2;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">Who it's for</span><span style="font-size:14px;line-height:1.55">High school students; motivated middle schoolers welcome</span></div>
     </div>
   </section>
 
-  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2;margin-top:32px"></div></div>
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
 
   <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px);display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,2.2fr);gap:clamp(24px,5vw,72px)">
     <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3vw,32px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">About the course</h2>
-    <div style="display:flex;flex-direction:column;gap:24px;max-width:70ch">
-      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is an immersive, hands-on studio course built around a simple idea: students don't just use materials—they learn to understand them. Through experimentation, artmaking, and exploration, students discover how materials are made, how they behave, where they come from, and how artists have used them to create meaning throughout history.</p>
-      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Throughout the fall semester, students move through a range of studio experiences—from drawing and observation to making their own paints, exploring plaster and cementitious materials, experimenting with layered surfaces, and developing a final body of work. Some classes are focused on learning new techniques, while others function as a teacher led open studio with a focussed work session, giving students time to experiment, develop ideas, and take their projects further.</p>
-      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is designed primarily for high school students and is also an excellent fit for motivated middle school students who enjoy making, experimenting, and exploring how things work. No advanced art experience is required—students build their skills as they go.</p>
+    <div>
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:70ch">
+        <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is a mixed-media fine arts course built around observation, experimentation, and a deeper understanding of materials and process. Students learn to see carefully, draw with confidence, and make choices that give their work meaning.</p>
+        <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">The semester begins with drawing, observation, color, and visual thinking. As students build confidence, the course expands into handmade paint, mixed media, layered surfaces, and selected sculptural and cementitious processes. Along the way, students learn how artists across history have used materials, from egg tempera and gold leaf to plaster and print, to shape what their work communicates. Materials are one of the ways students learn to think and work like artists, not the entire subject of the course.</p>
+        <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">The course closes with a more self-directed final project, planned, tested and refined over a full month, in which students choose the processes that best serve their own idea.</p>
+        <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is designed primarily for high school students and is also an excellent fit for motivated middle school students. No advanced art experience is required; students build their skills as they go.</p>
+      </div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin:32px 0 8px">Over the semester, your student will</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 32px">
+        <sc-for list="{{ will }}" as="w" hint-placeholder-count="8">
+          <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px">
+            <span style="width:22px;height:22px;flex:none;border-radius:3px;background:{{ w.color }}"></span><span>{{ w.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#ece9e2;border-radius:4px;padding:clamp(24px,4vw,40px);margin-top:48px">
+        <p style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(18px,2.4vw,26px);line-height:1.15;margin:0">Process over perfection. Studies, failed tests and revisions are part of the course, not evidence that something went wrong.</p>
+      </div>
     </div>
   </section>
 
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
 
   <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">What students gain</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.01em;margin:0 0 32px;text-transform:uppercase">Skill and judgment, built together</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <div style="background:#ece9e2;border-radius:4px;padding:24px"><div style="font-family:'Archivo Black',sans-serif;font-size:17px;text-transform:uppercase;margin-bottom:8px">Studio skills</div><p style="margin:0;color:#5c5954;font-size:15px;line-height:1.6">Drawing, composition, proportion, light, value, shading, color, craftsmanship and visual judgment.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:24px"><div style="font-family:'Archivo Black',sans-serif;font-size:17px;text-transform:uppercase;margin-bottom:8px">Creative exploration</div><p style="margin:0;color:#5c5954;font-size:15px;line-height:1.6">Mixed media, experimentation, transformation, problem-solving, imagination and developing individual ideas.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:24px"><div style="font-family:'Archivo Black',sans-serif;font-size:17px;text-transform:uppercase;margin-bottom:8px">Materials + process</div><p style="margin:0;color:#5c5954;font-size:15px;line-height:1.6">Pigments and binders, surfaces, handmade paint, historical techniques, and selected sculptural and cementitious materials.</p></div>
+    </div>
+    <p style="font-size:16px;line-height:1.6;color:#5c5954;margin:24px 0 0;max-width:64ch">Art history runs through all three as a thread: every week connects to artists and ideas from earlier or later in the semester, and to the course theme of seeing, making and meaning.</p>
+
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin:48px 0 16px">The semester arc</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px">
+      <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="5">
+        <div style="border-top:3px solid #181614;padding-top:10px"><div style="font-size:11px;font-weight:800;color:#cc4125;letter-spacing:0.06em">{{ ph.label }}</div><div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(11px,1.2vw,15px)">{{ ph.arcWord }}</div></div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 28px;margin-top:40px">
+      <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="8">
+        <div style="border-top:1px solid #dedad2;padding:18px 0 22px">
+          <div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px">{{ o.title }}</div>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">{{ o.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,2.2fr);gap:clamp(24px,5vw,72px);margin-top:48px">
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3vw,32px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">Questions we return to</h2>
+      <ol style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ guidingQuestions }}" as="q" hint-placeholder-count="6">
+          <li style="padding:14px 0;border-bottom:1px solid #dedad2;font-size:16px;line-height:1.5">{{ q }}</li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">How a week works</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.01em;margin:0 0 24px;text-transform:uppercase">An online studio that feels like a studio</h2>
+    <p style="font-size:18px;line-height:1.6;color:#5c5954;margin:0 0 40px;max-width:64ch">Demonstrations move to short videos before class, so the live hour is spent looking together and making, with the instructor troubleshooting in real time.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px">
+      <div style="border-top:2px solid #181614;padding-top:16px">
+        <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:18px;margin:0 0 12px">Live class, ~60 min</div>
+        <div style="display:flex;gap:3px;height:36px;margin:4px 0 12px">
+          <div style="flex:8;background:#55575C;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px">Look</div>
+          <div style="flex:12;background:#C98F2E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px">Learn</div>
+          <div style="flex:34;background:#cc4125;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px">Make</div>
+          <div style="flex:7;background:#1a1917;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px">Close</div>
+        </div>
+        <div style="font-size:14px;line-height:1.6;color:#5c5954"><b style="color:#181614">5–10 min</b> Slow looking at one artwork: what do you see, think, wonder?<br><b style="color:#181614">10–15 min</b> Technique, material science, artists and history.<br><b style="color:#181614">25–35 min</b> Studio time with live help and feedback.<br><b style="color:#181614">5 min</b> What happens next, and what to notice while working.</div>
+      </div>
+      <div style="border-top:2px solid #181614;padding-top:16px">
+        <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:18px;margin:0 0 12px">Between classes</div>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:10px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Continue the project; allow drying and curing time.</li>
+          <li style="padding:10px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Sketchbook practice most days.</li>
+          <li style="padding:10px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Post a photo to the class gallery with one "I notice…" comment on a classmate's work.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:40px">
+      <div style="background:#1a1917;color:#b9b6ae;border-radius:4px;padding:clamp(24px,3vw,36px)">
+        <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:20px;color:#fff;margin:0 0 12px">Sketchbook practice</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:clamp(36px,5vw,52px);color:#fff;line-height:1;margin:0 0 6px">5–10 MIN</div>
+        <p style="font-size:15px;line-height:1.65;margin:0 0 12px">4–6 days a week, every week of the course.</p>
+        <p style="font-size:15px;line-height:1.65;margin:0 0 12px">Short, frequent drawing keeps the observation skills from the first weeks growing all semester, even in weeks spent with paint and plaster. Each week has its own prompt, tied to what the class is learning.</p>
+        <p style="font-size:15px;line-height:1.65;margin:0">The sketchbook also holds thumbnails, color recipes, pigment tests, material notes and mistakes worth remembering. It can be messy. It is evidence of thinking.</p>
+        <div style="border-top:1px solid #3a3936;margin-top:20px;padding-top:16px;color:#fff"><span style="color:#cc4125;display:block;margin-bottom:4px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">Example prompt, week 11</span>Draw a shiny object, like a spoon, and map its reflections as shapes.</div>
+      </div>
+      <div style="background:#ece9e2;color:#5c5954;border-radius:4px;padding:clamp(24px,3vw,36px)">
+        <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:20px;color:#181614;margin:0 0 12px">The bookend drawing</div>
+        <p style="font-size:15px;line-height:1.65;margin:0">In Week 1 students draw an ordinary object. Before the final class they draw it again with the same setup. Side by side, the two drawings show a semester of growth more clearly than any grade.</p>
+      </div>
+      <div style="border:1px solid #dedad2;color:#5c5954;border-radius:4px;padding:clamp(24px,3vw,36px)">
+        <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:20px;color:#181614;margin:0 0 12px">Critique, online</div>
+        <p style="font-size:15px;line-height:1.65;margin:0">Each week three students are spotlighted live, and everyone shares in the class gallery. We begin with observation before interpretation, and ask questions before suggesting fixes. The aim is specific, useful feedback, never competition.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Course arc</div>
+    <p style="font-size:16px;line-height:1.6;color:#5c5954;margin:0 0 32px;max-width:64ch">The semester begins with drawing and visual thinking, then builds toward color, mixed media, sculptural material and a self-directed final project. Each phase sends students out once to look at art in the world.</p>
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 0 32px">
-      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,36px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">Unit-by-unit schedule</h2>
-      <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125">16 WEEK SEMESTER</div>
+      <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,36px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">Five phases, one semester</h2>
+      <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125">16-week semester</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:0">
-      <sc-for list="{{ units }}" as="u" hint-placeholder-count="5">
-        <div id="unit-{{ u.id }}" style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:28px 0;border-top:1px solid #dedad2;align-items:start;scroll-margin-top:96px">
-          <div style="font-family:'Archivo Black',sans-serif;font-size:14px;color:{{ u.color }}">{{ u.range }}</div>
-          <div style="aspect-ratio:4/3;overflow:hidden;background:#ece9e2;border-radius:3px">
-            <image-slot id="syllabus-unit-{{ u.id }}" shape="rect" placeholder="Photo of student work from this unit"></image-slot>
+      <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:28px 0;border-top:1px solid #dedad2;align-items:start">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:14px;color:#cc4125">{{ ph.label }}</div>
+          <div style="display:flex;gap:6px">
+            <sc-for list="{{ ph.colors }}" as="c" hint-placeholder-count="3">
+              <span style="flex:1;aspect-ratio:4/3;border-radius:3px;background:{{ c }}"></span>
+            </sc-for>
           </div>
           <div>
-            <div style="font-size:18px;font-weight:700;margin-bottom:10px">{{ u.title }}</div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:10px">{{ ph.title }}</div>
             <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
-              <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#ece9e2;padding:5px 10px;border-radius:2px">{{ u.weeks }}</span>
-              <span style="font-size:12px;color:#5c5954;font-variant-numeric:tabular-nums">{{ u.format }}</span>
+              <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#ece9e2;padding:5px 10px;border-radius:2px">{{ ph.weeksLabel }}</span>
+              <span style="font-size:12px;color:#5c5954;font-variant-numeric:tabular-nums">{{ ph.weekRange }}</span>
             </div>
-            <p style="font-size:15px;line-height:1.6;color:#5c5954;margin:0">{{ u.body }}</p>
-            <sc-if value="{{ u.assignmentUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ u.assignmentUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#cc4125;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:11px 20px;border-radius:3px;text-decoration:none" style-hover="background:#a83519">
-                <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path></svg>
-                View assignment
-              </a>
-            </sc-if>
+            <p style="font-size:15px;line-height:1.6;color:#5c5954;margin:0">{{ ph.body }}</p>
+            <div style="margin-top:16px;background:#ece9e2;border-radius:3px;padding:14px 16px;font-size:14px;line-height:1.55;color:#5c5954"><b style="color:#181614">{{ ph.outsideLabel }}</b> {{ ph.outsideBody }}</div>
           </div>
         </div>
       </sc-for>
       <div style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:24px 0;border-top:1px solid #181614;align-items:baseline">
         <div style="font-family:'Archivo Black',sans-serif;font-size:14px">TOTAL</div>
         <div style="font-size:15px;font-weight:700">16 weeks</div>
-        <div style="font-size:15px;color:#5c5954">10× 1-hr sessions + 2× 2-hr studio days</div>
+        <div style="font-size:15px;color:#5c5954">16 live sessions of about one hour, plus sketchbook practice and project work between classes</div>
       </div>
+    </div>
+  </section>
+
+  <section id="weeks" style="max-width:1280px;margin:0 auto;padding:24px clamp(20px,5vw,72px) 0">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin:40px 0 16px">Week by week</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.01em;margin:0 0 8px;text-transform:uppercase">Sixteen weeks</h2>
+    <sc-for list="{{ weeks }}" as="wk" hint-placeholder-count="16">
+      <sc-if value="{{ wk.phaseTitle }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:baseline;gap:14px;padding:40px 0 8px;border-bottom:2px solid #181614">
+          <span style="font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125">{{ wk.phaseLabel }}</span>
+          <h3 style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(18px,2vw,24px);margin:0">{{ wk.phaseTitle }}</h3>
+        </div>
+      </sc-if>
+      <article style="display:grid;grid-template-columns:150px 1fr;gap:clamp(20px,3vw,40px);padding:40px 0;border-bottom:1px solid #dedad2">
+        <div>
+          <div style="width:150px;height:150px;border-radius:3px;position:relative;background:{{ wk.color }}">
+            <span style="position:absolute;left:10px;top:8px;font-family:'Archivo Black',sans-serif;font-size:15px;color:{{ wk.numColor }}">{{ wk.id }}</span>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#8d8a83;margin-top:8px">{{ wk.pigment }}</div>
+        </div>
+        <div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+            <span style="font-family:'Archivo Black',sans-serif;font-size:14px;color:#cc4125;margin-right:6px">{{ wk.wl }}</span>
+            <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#ece9e2;padding:5px 10px;border-radius:2px">{{ wk.pill }}</span>
+            <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#ece9e2;padding:5px 10px;border-radius:2px">{{ wk.phaseLabelShort }}</span>
+          </div>
+          <h4 style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(22px,3vw,32px);line-height:1;margin:0 0 12px">{{ wk.headline }}</h4>
+          <p style="font-size:17px;line-height:1.55;color:#5c5954;margin:0 0 20px;max-width:60ch">{{ wk.idea }}</p>
+          <p style="margin:-8px 0 20px;font-size:15px;color:#5c5954"><span style="color:#cc4125;margin-right:10px">Thread</span>{{ wk.thread }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+            <div>
+              <div style="margin-bottom:14px"><span style="display:block;margin-bottom:6px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">Look + discuss</span><p style="margin:0;font-size:15px;line-height:1.65;color:#5c5954">{{ wk.look }}</p></div>
+            </div>
+            <div>
+              <span style="display:block;margin-bottom:6px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">In class</span><p style="margin:0;font-size:15px;line-height:1.65;color:#5c5954">{{ wk.inClass }}</p>
+              <sc-if value="{{ wk.chooseOptions }}" hint-placeholder-val="{{ false }}">
+                <sc-for list="{{ wk.chooseOptions }}" as="opt" hint-placeholder-count="4">
+                  <div style="border-left:3px solid #cc4125;padding:2px 0 2px 14px;margin-top:16px">
+                    <h5 style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:14px;margin:0 0 4px">{{ opt.name }}</h5>
+                    <p style="margin:0;font-size:14px;line-height:1.55;color:#5c5954">{{ opt.text }}</p>
+                  </div>
+                </sc-for>
+              </sc-if>
+            </div>
+            <div>
+              <div style="margin-bottom:20px"><span style="display:block;margin-bottom:6px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">Between classes</span><p style="margin:0;font-size:15px;line-height:1.65;color:#5c5954">{{ wk.between }}</p></div>
+              <div style="background:#ece9e2;border-radius:3px;padding:16px 18px">
+                <span style="display:block;font-size:12px;color:#8d8a83;margin:0 0 6px">Sketchbook practice · {{ wk.skWhen }}</span>
+                <p style="margin:0;font-size:15px;line-height:1.65;color:#181614">{{ wk.skText }}</p>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:24px;padding-top:16px;border-top:1px dashed #dedad2;font-size:14px;color:#5c5954">
+            <div><span style="margin-right:8px;color:#181614;font-weight:600">On the table</span>{{ wk.onTable }}</div>
+            <div><span style="margin-right:8px;color:#181614;font-weight:600">Stretch</span>{{ wk.stretch }}</div>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Final project / Weeks 13–16</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.01em;margin:0 0 32px;text-transform:uppercase">A self-directed final project</h2>
+    <div style="background:#1a1917;border-radius:4px;padding:clamp(28px,4vw,48px);margin-bottom:40px">
+      <p style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;color:#f7f6f2;font-size:clamp(20px,2.6vw,30px);line-height:1.15;margin:0 0 12px">Create one substantial artwork, or a small, tightly connected body of work, that combines at least two material or process families from the semester.</p>
+      <p style="color:#b9b6ae;margin:0;font-size:15px">The materials should support the idea, not simply appear because they were used in class.</p>
+    </div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px">Requirements</div>
+    <ol style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 40px;list-style:none;margin:0;padding:0">
+      <sc-for list="{{ requirements }}" as="r" hint-placeholder-count="9">
+        <li style="display:grid;grid-template-columns:40px 1fr;padding:14px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">
+          <span style="font-family:'Archivo Black',sans-serif;color:#cc4125;font-size:13px">{{ $index }}</span><span>{{ r }}</span>
+        </li>
+      </sc-for>
+    </ol>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:40px">
+      <div style="background:#ece9e2;border-radius:4px;padding:22px"><div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:16px;margin:0 0 8px">Intention</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">The student can explain the visual problem or idea being pursued.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:22px"><div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:16px;margin:0 0 8px">Material</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">Materials are handled with growing control and chosen for a reason.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:22px"><div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:16px;margin:0 0 8px">Development</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">The work changes through testing, critique, editing and revision.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:22px"><div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:16px;margin:0 0 8px">Presentation</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">The finished work is documented and discussed clearly, even if the artist would keep refining it.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin-top:40px;align-items:start">
+      <span style="font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding-top:15px">At the final showcase, every student answers</span>
+      <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(17px,1.8vw,22px);line-height:1.1;border-top:3px solid #cc4125;padding-top:12px">What were you trying to do?</div>
+      <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(17px,1.8vw,22px);line-height:1.1;border-top:3px solid #cc4125;padding-top:12px">Why these materials?</div>
+      <div style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(17px,1.8vw,22px);line-height:1.1;border-top:3px solid #cc4125;padding-top:12px">What changed along the way?</div>
+    </div>
+    <p style="margin-top:40px;padding-top:20px;border-top:2px solid #181614;font-size:17px;line-height:1.6;max-width:70ch;color:#181614">A technically perfect object with no intentional choices is not automatically stronger than a rougher work with real investigation. Craft matters, but the course values observation, experimentation, judgment and thoughtful revision together.</p>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Studio practice</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.01em;margin:0 0 32px;text-transform:uppercase">Sketchbook, critique and assessment</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,64px)">
+      <div>
+        <div style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:20px;margin:0 0 16px">The Art Lab sketchbook</div>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">One sketchbook for the whole semester, used 4–6 days a week for 5–10 minutes of drawing.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Weekly prompts connect daily drawing to the week's material, so observation keeps growing.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">It also holds thumbnails, proportion notes, value studies, color recipes and pigment tests.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Material observations and mistakes worth remembering belong here too.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Final-project planning and the closing reflection live in its last pages.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Pages can be messy. They are evidence of thinking, not portfolio pieces.</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:20px;margin:0 0 16px">How we talk about work</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><span style="font-weight:700;background:#ece9e2;padding:6px 12px;border-radius:3px">"I notice…"</span><span style="font-weight:700;background:#ece9e2;padding:6px 12px;border-radius:3px">"This makes me think…"</span></div>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Begin with observation before interpretation.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Be specific about visual evidence: edge, value, scale, color, texture, focal point, rhythm, material.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Ask questions before prescribing a fix. The goal is to help the artist see choices, not redesign the work.</li>
+          <li style="padding:12px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954">Students may disagree about meaning. Good critique separates what is visible from what is interpreted.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:56px">
+      <h3 style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:20px;margin:0 0 16px">Suggested evaluation, if a grade is needed</h3>
+      <div style="display:flex;gap:4px;height:72px">
+        <div style="flex:35;background:#55575C;display:flex;align-items:flex-end;padding:10px 12px;color:#fff;font-family:'Archivo Black',sans-serif;font-size:22px;border-radius:3px">35%</div>
+        <div style="flex:25;background:#C98F2E;display:flex;align-items:flex-end;padding:10px 12px;color:#fff;font-family:'Archivo Black',sans-serif;font-size:22px;border-radius:3px">25%</div>
+        <div style="flex:25;background:#7C8C63;display:flex;align-items:flex-end;padding:10px 12px;color:#fff;font-family:'Archivo Black',sans-serif;font-size:22px;border-radius:3px">25%</div>
+        <div style="flex:15;background:#cc4125;display:flex;align-items:flex-end;padding:10px 12px;color:#fff;font-family:'Archivo Black',sans-serif;font-size:22px;border-radius:3px">15%</div>
+      </div>
+      <div style="display:flex;gap:4px;margin-top:10px;flex-wrap:wrap">
+        <div style="flex:35 1 200px;font-size:13px;line-height:1.5;color:#5c5954"><span style="display:block;margin-bottom:4px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#181614">Process + engagement</span>Participation, preparation, sketchbook practice, tests, willingness to revise.</div>
+        <div style="flex:25 1 200px;font-size:13px;line-height:1.5;color:#5c5954"><span style="display:block;margin-bottom:4px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#181614">Studio skill + craft</span>Growing control of drawing, color, surface and materials.</div>
+        <div style="flex:25 1 200px;font-size:13px;line-height:1.5;color:#5c5954"><span style="display:block;margin-bottom:4px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#181614">Project development</span>Composition, problem-solving, experimentation, follow-through.</div>
+        <div style="flex:15 1 200px;font-size:13px;line-height:1.5;color:#5c5954"><span style="display:block;margin-bottom:4px;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#181614">Final + reflection</span>Sustained development, material intention, presentation.</div>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)"><div style="border-top:1px solid #dedad2"></div></div>
+
+  <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#cc4125;margin-bottom:16px">Materials &amp; supplies</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.5vw,40px);letter-spacing:-0.01em;margin:0 0 24px;text-transform:uppercase">Supplies in three stages</h2>
+    <p style="font-size:18px;line-height:1.6;color:#5c5954;margin:0 0 32px;max-width:64ch">Supplies are staged so families aren't buying everything at once. Specialty items are selected, and where possible pre-portioned, by the instructor. A separate Materials Guide lists every item week by week.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+      <div style="background:#ece9e2;border-radius:4px;padding:24px"><span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#fff;padding:5px 10px;border-radius:2px">Weeks 1–3</span><div style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:18px;margin:12px 0 8px">Drawing</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">Graphite pencils HB–6B, charcoal, kneaded eraser, blending stump, toned paper and the Art Lab sketchbook.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:24px"><span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#fff;padding:5px 10px;border-radius:2px">Weeks 4–7</span><div style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:18px;margin:12px 0 8px">Paint lab</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">Pigment pastes, prepared casein binder, palette, brushes, panels and illustration board, collage papers and glue.</p></div>
+      <div style="background:#ece9e2;border-radius:4px;padding:24px"><span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#fff;padding:5px 10px;border-radius:2px">Weeks 8–16</span><div style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:18px;margin:12px 0 8px">Surface + form</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5c5954">Modeling paste, plasticine, casting plaster, carving tools, sandpaper, gilding size and imitation leaf, gel medium, gel plate, brayer, sun-print paper, gloves and goggles.</p></div>
+    </div>
+    <div style="margin-top:16px;border:1px solid #dedad2;border-radius:4px;padding:16px 20px;font-size:15px;color:#5c5954"><span style="font-weight:700;margin-right:6px">From home</span>Eggs, a few household objects, cardboard and found materials, a desk lamp, a phone for photos, and old kitchen utensils that can be retired to art use.</div>
+    <h3 style="font-family:'Archivo Black',sans-serif;font-weight:400;text-transform:uppercase;font-size:22px;margin-top:56px">Home studio safety</h3>
+    <p style="color:#5c5954;margin:8px 0 0">Safety takes priority over technical complexity. Every material week includes a short safety briefing.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 40px;margin-top:20px;border-top:1px solid #dedad2">
+      <sc-for list="{{ safety }}" as="s" hint-placeholder-count="12">
+        <div style="padding:13px 0;border-bottom:1px solid #dedad2;font-size:15px;line-height:1.55;color:#5c5954"><b style="color:#181614">{{ s.b }}</b> {{ s.rest }}</div>
+      </sc-for>
     </div>
   </section>
 
   <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 96px">
     <div style="background:#1a1917;border-radius:4px;padding:clamp(32px,6vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
       <div>
-        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3.5vw,36px);letter-spacing:-0.01em;margin:0 0 8px;text-transform:uppercase;color:#f7f6f2">Want a copy for your records?</h2>
-        <p style="font-size:14px;color:#b9b6ae;margin:0">Download the PDF version of this syllabus.</p>
+        <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3.5vw,36px);letter-spacing:-0.01em;margin:0 0 8px;text-transform:uppercase;color:#f7f6f2">Get the full syllabus PDF</h2>
+        <p style="font-size:14px;color:#b9b6ae;margin:0">Every week, the final project, evaluation and home safety notes, in one printable file.</p>
       </div>
-      <a href="./downloads/syllabus.pdf" download="" style="background:#cc4125;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none;white-space:nowrap">Download Syllabus</a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="./downloads/syllabus.pdf" download="" style="background:#cc4125;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none;white-space:nowrap">Download syllabus</a>
+        <a href="/enroll-and-pay" style="background:transparent;border:1px solid #4a4843;color:#f7f6f2;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:16px 32px;border-radius:3px;text-decoration:none;white-space:nowrap">Enroll &amp; pay</a>
+      </div>
     </div>
   </section>
 
@@ -122,20 +375,105 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const UNITS = [
-  { id: 1, range: 'Unit 01', title: 'Oberservation & Drawing', weeks: '2 weeks', format: '1-hr', color: '#cc4125', body: 'Drawing and observation as the foundation for everything that follows.' , assignmentUrl: './downloads/unit-1-assignment.pdf' },
-  { id: 2, range: 'Unit 02', title: 'Handmade Pigments, Paint, and Color Studies', weeks: '3 weeks', format: '1-hr', color: '#a5763a', body: 'Students make their own paints, working from pigment and binder to a usable medium.  They will also learn several principles of color theory, ' },
-  { id: 3, range: 'Unit 03', title: 'Geopolymer & Cementitious Materials and Sculpting', weeks: '5 weeks', format: '1-hr ×3 + 2-hr studio day (mix & cast)', color: '#5c6b4a', body: 'Plaster, geopolymer, and cement, ending in a studio day for casting.' },
-  { id: 4, range: 'Unit 04', title: 'Layers, Light & Texture', weeks: '4 weeks', format: '1-hr', color: '#3b6a72', body: 'Experiments with light and layered surfaces built on the materials made earlier in the course.' },
-  { id: 5, range: 'Unit 05', title: 'Final Project', weeks: '2 weeks', format: '2-hr studio day (plan + make)', color: '#5a4a72', body: 'A single extended session to plan and make a final piece.' },
+const WILL = [
+  { color: '#55575C', text: 'Draw from observation with structure, proportion and depth' },
+  { color: '#1E1E1F', text: 'Use light, value and composition to guide the viewer’s eye' },
+  { color: '#6A8CC0', text: 'Transform observation into imagination through Surrealism' },
+  { color: '#F0B83C', text: 'Mix color by hand and paint with egg tempera and casein' },
+  { color: '#A5502C', text: 'Build layered mixed-media compositions' },
+  { color: '#ECE9E1', text: 'Cast, carve and finish a sculptural relief' },
+  { color: 'linear-gradient(135deg,#9C7722 0%,#E6C76E 32%,#B48D34 52%,#F0D98B 74%,#A07B25 100%)', text: 'Work with gold leaf, light and experimental printmaking' },
+  { color: '#3046A6', text: 'Plan, refine and present a self-directed final project' },
+];
+
+const OUTCOMES = [
+  { title: 'Observation', body: 'Break complex subjects into large shapes and simple three-dimensional forms before adding detail.' },
+  { title: 'Drawing', body: 'Use proportion, overlap, perspective, value, edge, texture and cast shadow to create believable form.' },
+  { title: 'Color', body: 'Mix primaries intentionally; understand warm and cool, complements, limited palettes and value shifts.' },
+  { title: 'Paint making', body: 'Understand paint as pigment plus binder by making and comparing egg tempera and casein.' },
+  { title: 'Mixed media', body: 'Combine drawing, paint, collage, found material and print as one language, not separate subjects.' },
+  { title: 'Material thinking', body: 'Build, cast, carve, sand, stain and gild, considering what the physical material contributes.' },
+  { title: 'Art history + meaning', body: 'Use historical and contemporary art to discuss culture, faith, beauty, symbolism and memory.' },
+  { title: 'Studio practice', body: 'Plan, test, revise, document, critique and finish a sustained project over several weeks.' },
+];
+
+const GUIDING_QUESTIONS = [
+  'What changes when we slow down and truly observe before drawing?',
+  'How do form, value, color, texture and composition guide what a viewer notices?',
+  'What is paint actually made of, and how does a binder change the behavior of pigment?',
+  'How can flat images become layered surfaces, reliefs and physical objects?',
+  'How have artists used beauty, disruption, symbolism, light and material to communicate belief or meaning?',
+  'How does an artist move from an assigned technique toward intentional personal choices?',
+];
+
+const PHASES = [
+  { label: 'Phase I', arcWord: 'Observe', title: 'Drawing foundations', weeksLabel: '3 weeks', weekRange: 'Weeks 1–3', colors: ['#55575C', '#1E1E1F', '#6A8CC0'], body: 'Students learn to see, simplify, construct and light form: basic shapes, proportion, depth, value, composition and simple figure construction. Then they use those skills to transform observation into imagination through Surrealism.', outsideLabel: 'Looking outside class: Light hunt.', outsideBody: 'Photograph three strong cast shadows at home and bring the best one to class.' },
+  { label: 'Phase II', arcWord: 'Explore', title: 'Color + paint', weeksLabel: '2 weeks', weekRange: 'Weeks 4–5', colors: ['#F0B83C', '#C98F2E'], body: 'Color theory becomes physical. Students mix their own color from primaries, then make and paint with egg tempera and casein, learning how pigment becomes paint.', outsideLabel: 'Looking outside class: Zoom in.', outsideBody: 'Study one tempera painting up close in a museum or on Google Arts & Culture, and sketch a single detail.' },
+  { label: 'Phase III', arcWord: 'Transform', title: 'Mixed media + surface', weeksLabel: '3 weeks', weekRange: 'Weeks 6–8', colors: ['#A5502C', '#BF3B3B', '#6E5739'], body: 'Drawing, paint, collage and found imagery combine into layered compositions, then rise off the page into a shallow relief that holds real light and shadow.', outsideLabel: 'Looking outside class: Relief in the wild.', outsideBody: 'Find carved or cast relief in your town, on a doorway, building, monument or grave marker, and photograph it in low, raking light.' },
+  { label: 'Phase IV', arcWord: 'Refine', title: 'Form, light + process', weeksLabel: '4 weeks', weekRange: 'Weeks 9–12', colors: ['#ECE9E1', '#7C8C63', '#1F4E8C'], body: 'Selected sculptural materials, gold leaf and printmaking show how material and process shape what a work communicates.', outsideLabel: 'Looking outside class: Light on a surface.', outsideBody: 'Find one gilded, metallic or reflective surface and photograph it in two different lights.' },
+  { label: 'Phase V', arcWord: 'Present', title: 'Final project', weeksLabel: '4 weeks', weekRange: 'Weeks 13–16', colors: ['#2B3452', '#5E2F34', '#2F7361', '#3046A6'], body: 'A month of self-directed work: students plan, test, build and refine one project, choosing the processes that best serve their own idea.', outsideLabel: 'Looking outside class: See one show.', outsideBody: 'Visit a museum, gallery or student exhibition in person before the final critique.' },
+];
+
+const REQUIREMENTS = [
+  'A clear concept, question or visual intention that can be explained in ordinary language.',
+  'At least two material or process families from the semester, such as drawing + casein, collage + relief, cast plaster + gilding, or transfer + cyanotype.',
+  'Evidence of planning: thumbnails, reference images, a material test or a small prototype.',
+  'Meaningful development across Weeks 13–16. A one-night project doesn’t meet the purpose of the assignment.',
+  'At least one revision after critique, and the ability to say what changed and why.',
+  'Clear documentation: a full image and a detail, photographed in even light against a simple background.',
+  'A short presentation describing intention, material choices, one problem solved and one unexpected discovery.',
+  'The bookend drawing, shown beside the student’s Week 1 drawing.',
+  'One artist from the semester whose thinking shaped the project, named in the presentation.',
+];
+
+const SAFETY = [
+  { b: 'Approved pigments only.', rest: 'Non-toxic, instructor-approved pigments. No lead, cadmium, cobalt or chromium.' },
+  { b: 'Pigment arrives as paste.', rest: 'Pre-dispersed in water, so there is no dry pigment dust at home.' },
+  { b: 'No airborne dust.', rest: 'Casting powder comes pre-portioned. Never blow or dry-sweep; clean up with a damp cloth.' },
+  { b: 'Gloves and eye protection', rest: 'for casting, gilding size and any material the instructor identifies as irritating.' },
+  { b: 'Plaster gets warm as it sets.', rest: 'Never cast hands or any part of the body.' },
+  { b: 'Cement mixes are caustic when wet.', rest: 'Optional for older students only, with gloves, goggles and an adult nearby.' },
+  { b: 'Never pour plaster down a drain.', rest: 'Let leftovers harden in the cup, then throw them away.' },
+  { b: 'No chemistry mixing at home.', rest: 'Cyanotype uses pre-coated paper. No caustic activators are used.' },
+  { b: 'Acrylic sheet, not glass,', rest: 'for transparent drawing activities.' },
+  { b: 'Supervised tools.', rest: 'Cutting tools, heat tools and wire only with age-appropriate supervision.' },
+  { b: 'Art utensils stay art utensils.', rest: 'Spoons and cups used for paint or plaster never return to the kitchen.' },
+  { b: 'A wipeable work surface', rest: 'and old clothes or an apron for every material week.' },
+];
+
+const WEEKS = [
+  { id: '01', color: '#55575C', numColor: 'rgba(255,255,255,.95)', pigment: 'graphite', wl: 'Week 01', pill: 'Drawing Foundations I', phaseLabelShort: 'Phase I', phaseLabel: 'Phase I', phaseTitle: 'Drawing foundations', headline: 'See, simplify + construct', idea: 'Anything can be drawn once you see the simple forms underneath it.', thread: 'Leonardo drew to understand. That habit of looking underlies every week that follows.', look: 'Leonardo’s notebooks and Dürer’s studies show drawing as a way of paying attention. Rembrandt’s quick pen sketches show how to capture a pose in seconds.', inClass: 'Sphere, box, cylinder and cone. Build complex objects from simple forms, check proportion by sighting, and use overlap and placement to create depth. Finish with 30-second gesture poses and a simple figure built from basic forms.', between: 'Two observational drawings built from big shapes to details, plus one page of gestures.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Alternate days: one object built from simple forms, or five quick gestures of people around you.', onTable: 'Pencils HB–6B, eraser, sketchbook, a few household objects.', stretch: 'Draw a chair or bicycle using only construction lines.' },
+  { id: '02', color: '#1E1E1F', numColor: '#fff', pigment: 'bone black', wl: 'Week 02', pill: 'Drawing Foundations II', phaseLabelShort: 'Phase I', headline: 'Light, value + composition', idea: 'Light turns shape into form, and composition decides what the viewer sees first.', thread: 'Caravaggio’s light returns in Week 11, when light itself becomes a material.', look: 'Caravaggio and Rembrandt used light for drama and meaning. Edward Hopper used light and placement to create mood.', inClass: 'One light source and a value scale. Form shadow and cast shadow; shading by blending, hatching and cross-hatching. Light a simple figure built from forms, then plan a value drawing through thumbnails exploring focal point, cropping and placement.', between: 'A finished value drawing with a clear focal point, planned through at least three thumbnails.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'One object in single-source light, drawn in three values inside a thumbnail frame.', onTable: 'Pencils, blending stump, desk lamp, a white object such as an egg or mug.', stretch: 'A value drawing in charcoal and white chalk on toned paper.' },
+  { id: '03', color: '#6A8CC0', numColor: 'rgba(255,255,255,.95)', pigment: 'twilight blue', wl: 'Week 03', pill: 'Drawing Foundations III', phaseLabelShort: 'Phase I', headline: 'Transform: Surrealism', idea: 'A strange image becomes powerful when it is drawn convincingly and says something true.', thread: 'Surrealist chance methods return in Week 12.', look: 'Bosch’s dream imagery, then Dalí, Magritte, Remedios Varo and Leonora Carrington. Distortion, juxtaposition, dream logic and metamorphosis as tools for asking deeper questions. Discussion: Beauty, Brokenness & Truth. Surrealism can be a visual language without being a worldview.', inClass: 'Choose one transformation strategy: a scale shift, an impossible pairing, or one thing becoming another. Thumbnail it, then build it with believable form, light and shadow.', between: 'Complete the Surrealist drawing and write one sentence about the question it asks.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'One “what if” a day, drawn believably.', onTable: 'Drawing kit and reference photos.', stretch: 'Include a figure built with the Week 1–2 construction method.' },
+  { id: '04', color: '#F0B83C', numColor: 'rgba(24,22,20,.8)', pigment: 'egg yolk', wl: 'Week 04', pill: 'Color Theory + Egg Tempera', phaseLabelShort: 'Phase II', phaseLabel: 'Phase II', phaseTitle: 'Color + paint', headline: 'Mixing what you see', idea: 'Color theory becomes meaningful when you physically mix color instead of only naming it on a wheel.', thread: 'Medieval tempera panels were often set against gold, which we revisit in Week 11.', look: 'Begin by reviewing the Surrealist drawings. Then the glowing panels of Duccio and Fra Angelico, and Andrew Wyeth’s 20th-century tempera: why a slow, layered paint produces such luminous color.', inClass: 'Primaries, secondaries, complements, warm and cool, value. Students mix pigment into egg-yolk binder and build their own color-mixing chart.', between: 'Finish the chart or a small tempera study using only colors you mixed. Optional: add selective color to the Surrealist drawing.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Each day, note five colors you actually see (not their “name” color) and write how you would mix one.', onTable: 'Eggs, pigment pastes, palette, small brushes, watercolor paper or panel.', stretch: 'Build form with hatched tempera strokes, the way medieval painters did.' },
+  { id: '05', color: '#C98F2E', numColor: 'rgba(255,255,255,.95)', pigment: 'yellow ochre', wl: 'Week 05', pill: 'Pigment + Casein Paint', phaseLabelShort: 'Phase II', headline: 'Paint is made', idea: 'Paint is pigment carried by a binder. Change the binder and you change the paint.', thread: 'Jacob Lawrence’s flat, bold shapes look ahead to collage in Weeks 6–7.', look: 'Jacob Lawrence painted his Migration Series in casein tempera. We also look at milk paints in folk and decorative painting, and ask why an artist would choose a matte surface over a luminous one.', inClass: 'A demonstration of how pigment becomes paint, and how milk becomes casein. Students mix pigment paste into prepared casein in small batches, compare it with egg tempera, and make a small painted study.', between: 'Finish the casein study. Note which colors covered well, which felt transparent, and how casein differed from tempera.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Plan one scene from your day as flat shapes and a few colors, the way Lawrence composed.', onTable: 'Casein binder, pigment pastes, illustration board or cardboard, brushes.', stretch: 'Use only three pigments plus white. How many colors can you mix?' },
+  { id: '06', color: '#A5502C', numColor: 'rgba(255,255,255,.95)', pigment: 'burnt sienna', wl: 'Week 06', pill: 'Mixed Media I', phaseLabelShort: 'Phase III', phaseLabel: 'Phase III', phaseTitle: 'Mixed media + surface', headline: 'Layer + transform', idea: 'Adding material should change the image, not simply decorate it.', thread: 'Schwitters’s found scraps connect to Cornell’s boxes and, later, to cast objects.', look: 'Kurt Schwitters, Joseph Cornell and Betye Saar, who brought ordinary materials into art. Can a material carry memory before it is altered?', inClass: 'Combine a drawing or image with casein, collage paper, text, tracing paper, cardboard, thread, fabric or foil. Practice covering, revealing, tearing, cutting, sanding and redrawing.', between: 'Continue the layered piece, then remove at least one element that isn’t helping. Editing is part of making.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Tape in one found scrap a day (a ticket, a label, a leaf) and draw into or around it.', onTable: 'Glue, scissors, collage papers, found materials, casein paints.', stretch: 'Build a layer you later sand back to reveal what lies beneath.' },
+  { id: '07', color: '#BF3B3B', numColor: 'rgba(255,255,255,.95)', pigment: 'madder red', wl: 'Week 07', pill: 'Mixed Media II', phaseLabelShort: 'Phase III', headline: 'Composition', idea: 'A mixed-media work needs the same compositional discipline as a drawing.', thread: 'Höch’s photomontage grew from the same era as the Surrealism of Week 3.', look: 'Hannah Höch’s photomontages and Romare Bearden’s collages: fragments assembled into a new visual world. How context changes meaning.', inClass: 'A new or expanded composition of found imagery, hand drawing and painted passages, focusing on scale change, overlap, negative space, focal point, transparency and edge.', between: 'Resolve the composition. Photograph it straight-on and write one note: where does the eye go first, and why?', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Three tiny thumbnails a day of the same subject, moving the focal point each time.', onTable: 'Printed images, tracing paper, glue, paints.', stretch: 'Rebuild the same pieces into a second version with a new focal point.' },
+  { id: '08', color: '#6E5739', numColor: 'rgba(255,255,255,.95)', pigment: 'raw umber', wl: 'Week 08', pill: 'Texture + Relief', phaseLabelShort: 'Phase III', headline: 'When the surface becomes an object', idea: 'The step from 2D to 3D can begin with only a few millimeters of depth.', thread: 'Ghiberti’s relief doors were cast in bronze and gilded, previewing Weeks 9–11.', look: 'Ghiberti’s Gates of Paradise and Louise Nevelson’s wall assemblages; relief in doors, architecture and sacred spaces. How real light changes a surface through the day.', inClass: 'A shallow relief from cardboard, string, fabric, sand and modeling paste: raised and recessed areas, rough and smooth passages, edges that cast real shadows. Paint or stain only after the structure works.', between: 'Finish the relief and photograph a close-up in raking light. Collect small textures and objects to press into clay next week.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Texture hunt: bark, brick, rope, fabric, any surface you could build.', onTable: 'Cardboard, glue, string, modeling paste, plasticine.', stretch: 'Design with shadow: make the cast shadows part of the composition.' },
+  { id: '09', color: '#ECE9E1', numColor: 'rgba(24,22,20,.8)', pigment: 'plaster white', wl: 'Week 09', pill: 'Sculptural Materials I', phaseLabelShort: 'Phase IV', phaseLabel: 'Phase IV', phaseTitle: 'Form, light + process', headline: 'Design + cast', idea: 'Casting reverses normal making: you design the empty space first and reveal the object later.', thread: 'Rachel Whiteread casts empty space, the reverse of the Week 1 habit of seeing solid forms.', look: 'Roman concrete and the Pantheon, and Rachel Whiteread, who casts the empty space inside and around things. Why stone-like materials suggest permanence and memory.', inClass: 'Safety briefing first. Press a design into oil-based clay inside a small container: incised lines, pressed textures, carved hollows. Mix casting plaster and pour. A cement mix is available to older students with instructor approval.', between: 'Let the cast set undisturbed. Sketch two finishing ideas for Week 10.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Draw things in reverse: a footprint, the inside of a cup, a keyhole, a mold.', onTable: 'Plasticine, small container, pre-portioned plaster, mixing cup, gloves, goggles.', stretch: 'Add integral pigment or fine aggregate to a test pour and compare.' },
+  { id: '10', color: '#7C8C63', numColor: 'rgba(255,255,255,.95)', pigment: 'green earth', wl: 'Week 10', pill: 'Sculptural Materials II', phaseLabelShort: 'Phase IV', headline: 'Carve + finish', idea: 'A cast object is a beginning. Surface and context decide what it becomes.', thread: 'Kintsugi answers the Week 3 question: brokenness made beautiful.', look: 'Kintsugi, the Japanese art of mending broken pottery with gold, alongside ancient fragments and patina. Why artists keep cracks and wear instead of hiding them.', inClass: 'Demold. Sand, carve, incise and refine edges; apply a pigment wash or stain. Begin joining the cast piece with wood, wire, paper, textile or a painted panel.', between: 'Complete the integrated object. Photograph the whole piece and one detail of its surface.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Draw something cracked, worn or mended.', onTable: 'Carving tools, sandpaper, pigment wash, found materials.', stretch: 'Break a test cast on purpose and design its repair.' },
+  { id: '11', color: 'linear-gradient(135deg,#9C7722 0%,#E6C76E 32%,#B48D34 52%,#F0D98B 74%,#A07B25 100%)', numColor: 'rgba(24,22,20,.8)', pigment: 'gold leaf', wl: 'Week 11', pill: 'Surface + Light', phaseLabelShort: 'Phase IV', headline: 'Gilding and reflection', idea: 'Light can act like a material. A reflective surface changes as the viewer moves.', thread: 'Gold grounds in icons and tempera panels close the loop from Week 4.', look: 'Byzantine and Ethiopian icons, illuminated manuscripts and Klimt, then kintsugi again. Gold used for luxury versus gold as a symbol: a field of light rather than a place.', inClass: 'Simplified gilding with water-based size and imitation leaf, used as one intentional focal point, perhaps on the cast piece. Compare matte, glossy, translucent and metallic passages.', between: 'Finish the surface study and photograph it from two angles so the change in light is visible.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Draw a shiny object (a spoon, a doorknob, a glass) and map its reflections as shapes.', onTable: 'Gilding size, imitation leaf, soft brush, cast piece or panel.', stretch: 'Sgraffito: paint over gold, then scratch back through to it.' },
+  { id: '12', color: '#1F4E8C', numColor: 'rgba(255,255,255,.95)', pigment: 'prussian blue', wl: 'Week 12', pill: 'Chance + Experimental Process', phaseLabelShort: 'Phase IV', headline: 'Chance and control', idea: 'Not every decision has to be predicted. Artists can design a process, then respond to what happens.', thread: 'Anna Atkins used cyanotype to observe plants, joining observation and art the way Week 1 joined observation and drawing.', look: 'Anna Atkins’s cyanotypes, Degas’s monotypes, Robert Rauschenberg’s transfer drawings and Max Ernst’s frottage, a Surrealist chance method that links back to Week 3.', inClass: 'Several fast experiments with one printmaking process, then select and alter the strongest rather than accepting the first result. Choose one process:', chooseOptions: [
+    { name: 'Acrylic transfer', text: 'Move a laser-printed or photocopied image onto paper, panel or plaster with acrylic gel medium, then rub the paper away. Inkjet prints tend to smear.' },
+    { name: 'Monoprint', text: 'Roll paint onto a gel plate, draw, mask and layer, and pull one-of-a-kind prints.' },
+    { name: 'Cyanotype', text: 'Sun printing on pre-coated paper. A UV lamp helps on cloudy November days.' },
+    { name: 'Suminagashi', text: 'Floating-ink marbling: ink rings on water, lifted onto paper.' },
+  ], between: 'Add one intentional intervention to the best print: drawing, cut, paint, text, stitch, gilding or collage. Bring it to Week 13 as a possible final-project test.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Start each page with a chance mark (a rubbing, a blot, a drip) and turn it into something.', onTable: 'Gel medium, brayer, gel plate, sun-print paper, laser-printed images.', stretch: 'Combine two processes: a transfer printed over a cyanotype.' },
+  { id: '13', color: '#2B3452', numColor: 'rgba(255,255,255,.95)', pigment: 'indigo', wl: 'Week 13', pill: 'Final Project I', phaseLabelShort: 'Phase V', phaseLabel: 'Phase V', phaseTitle: 'Final project', headline: 'Concept + material plan', idea: 'Strong work starts with a question or intention, not a shopping list of techniques.', thread: 'Name one artist from the semester whose thinking shapes your final project.', look: 'Artists who combine media because the material supports the idea, such as Joseph Cornell’s boxes and Anselm Kiefer’s paintings built with straw, lead and ash. Symbolism without forcing one fixed meaning.', inClass: 'Develop 2–3 concepts in thumbnails and name the main visual problem. Choose at least two material families from the semester and make small tests. The instructor approves scope and materials.', between: 'Show the chosen concept, a rough composition, a material plan and at least one test sample.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Daily idea pages: thumbnails, notes and reference sketches toward the final.', onTable: 'Anything from the semester’s kits; the student’s plan decides.', stretch: 'A small, tightly connected series instead of a single piece.' },
+  { id: '14', color: '#5E2F34', numColor: 'rgba(255,255,255,.95)', pigment: 'caput mortuum', wl: 'Week 14', pill: 'Final Project II', phaseLabelShort: 'Phase V', headline: 'Build', idea: 'Establish the large relationships before polishing details.', thread: 'Keep your chosen artist in view: what did they control, and what did they leave raw?', look: 'Michelangelo’s unfinished Prisoners, where rough stone and refined form sit side by side. Craftsmanship is not the same as perfection: what must be controlled, and what can stay raw?', inClass: 'Studio week. Build the support, main composition, relief, cast part or major painted areas. Feedback focuses on scale, structure, hierarchy and whether the materials are helping the idea.', between: 'Reach a clear midpoint. Photograph the work and name the single biggest problem to solve next.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'A daily study of one detail from your final project’s subject.', onTable: 'Final-project materials.', stretch: 'Make a small side study to test a risky decision before trying it on the main piece.' },
+  { id: '15', color: '#2F7361', numColor: 'rgba(255,255,255,.95)', pigment: 'viridian', wl: 'Week 15', pill: 'Final Project III', phaseLabelShort: 'Phase V', headline: 'Develop + refine', idea: 'Refinement often means subtraction, repetition and better transitions, not adding more.', thread: 'Look back at your chosen artist: how did they know a work was finished?', look: 'Matisse photographed his Large Reclining Nude again and again as he simplified it over months. How do artists know when a work is resolved? Separating technical finishing from overworking.', inClass: 'Continue surface, color, layering and assembly. Mid-project critique: what is strongest, what is competing, where does the eye go, what should go? Then revise.', between: 'Finish all major construction, leaving only finishing, photography and presentation. Make the bookend drawing before the final class.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'Draw your work in progress from a new angle each day and note one change.', onTable: 'Final-project materials.', stretch: 'Write a 50-word museum-style label for your piece.' },
+  { id: '16', color: '#3046A6', numColor: 'rgba(255,255,255,.95)', pigment: 'ultramarine', wl: 'Week 16', pill: 'Final Project IV', phaseLabelShort: 'Phase V', headline: 'Finish + present', idea: 'A work isn’t finished until the artist can present it clearly and reflect on the decisions behind it.', thread: 'Present your chosen artist alongside your work and explain the connection.', look: 'Back to the semester theme of seeing, making and meaning, with each student’s Week 1 and bookend drawings side by side. Museum wall labels as a model for explaining a work in a few clear sentences.', inClass: 'Final adjustments, photography in good light, then an online showcase. Each student answers three questions: What were you trying to do? Why these materials? What changed along the way?', between: 'A final sketchbook reflection: one skill gained, one material to explore further, one question still open.', skWhen: '4–6 times a week, 5–10 minutes', skText: 'The bookend drawing, made before class: redraw your Week 1 subject with the same setup.', onTable: 'Finished work, a phone camera, good light.', stretch: 'Assemble a one-page digital portfolio of your strongest work from the semester.' },
 ];
 
 class Component extends DCLogic {
   renderVals() {
-    return { units: UNITS, year: new Date().getFullYear() };
+    return {
+      will: WILL, outcomes: OUTCOMES, guidingQuestions: GUIDING_QUESTIONS,
+      phases: PHASES, requirements: REQUIREMENTS, safety: SAFETY, weeks: WEEKS,
+      year: new Date().getFullYear(),
+    };
   }
 }
-
 </script>
 </body>
 </html>

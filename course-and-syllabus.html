@@ -44,8 +44,8 @@
   <section style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,72px);display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,2.2fr);gap:clamp(24px,5vw,72px)">
     <h2 style="font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3vw,32px);letter-spacing:-0.01em;margin:0;text-transform:uppercase">About the course</h2>
     <div style="display:flex;flex-direction:column;gap:24px;max-width:70ch">
-      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is an immersive, hands-on studio course built around a simple idea: students don't just use materials—they learn to understand them. Through experimentation, artmaking, and exploration, students discover how materials are made, how they behave, where they come from, and how artists have used them to create meaning throughout history.</p>
-      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Throughout the fall semester, students move through a range of studio experiences—from drawing and observation to making their own paints, exploring plaster and cementitious materials, experimenting with layered surfaces, and developing a final body of work. Some classes are focused on learning new techniques, while others function as a teacher led open studio with a focussed work session, giving students time to experiment, develop ideas, and take their projects further.</p>
+      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">Art Lab: Foundations is a mixed-media fine arts course built around observation, experimentation, and a deeper understanding of materials and process. Students learn to see carefully, draw with confidence, and make choices that give their work meaning.</p>
+      <p style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty">The semester begins with drawing, observation, color, and visual thinking. As students build confidence, the course expands into handmade paint, mixed media, layered surfaces, and selected sculptural and cementitious processes. Along the way, students learn how artists across history have used materials, from egg tempera and gold leaf to plaster and print, to shape what their work communicates. Materials are one of the ways students learn to think and work like artists, not the entire subject of the course. The course closes with a more self-directed final project, planned, tested, and refined over a full month.</p>
       
       <div style="font-size:16px;line-height:1.7;margin:0;color:#5c5954;text-wrap:pretty"><p dir="auto" style="white-space-collapse: preserve;">Art Lab: Foundations is designed primarily for high school students and is also an excellent fit for motivated middle school students who enjoy making, experimenting, and exploring how things work. No advanced art experience is required—students build their skills as they go.</p></div>
     </div>
@@ -63,7 +63,7 @@
         <div style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:28px 0;border-top:1px solid #dedad2;align-items:start">
           <div style="font-family:'Archivo Black',sans-serif;font-size:14px;color:#cc4125">{{ u.range }}</div>
           <div style="aspect-ratio:4/3;overflow:hidden;background:#ece9e2;border-radius:3px">
-            <image-slot id="unit-{{ u.id }}" shape="rect" placeholder="Photo of student work from this unit"></image-slot>
+            <image-slot id="unit-{{ u.id }}" shape="rect" src="{{ u.image }}" placeholder="Photo of student work from this unit"></image-slot>
           </div>
           <div>
             <div style="font-size:18px;font-weight:700;margin-bottom:10px">{{ u.title }}</div>
@@ -84,7 +84,7 @@
       <div style="display:grid;grid-template-columns:120px 1fr 1.4fr;gap:28px;padding:24px 0;border-top:1px solid #181614;align-items:baseline">
         <div style="font-family:'Archivo Black',sans-serif;font-size:14px">TOTAL</div>
         <div style="font-size:15px;font-weight:700">16 weeks</div>
-        <div style="font-size:15px;color:#5c5954">10× 1-hr sessions + 2× 2-hr studio days</div>
+        <div style="font-size:15px;color:#5c5954">16 live sessions of about one hour, plus sketchbook practice and project work between classes</div>
       </div>
     </div>
   </section>
@@ -114,11 +114,11 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 const UNITS = [
-  { id: 1, range: 'Unit 01', title: 'Oberservation & Drawing', weeks: '2 weeks', format: '1-hr', body: 'Drawing and observation as the foundation for everything that follows.', assignmentUrl: './downloads/unit-1-assignment.pdf' },
-  { id: 2, range: 'Unit 02', title: 'Handmade Pigments, Paint, and Color Studies', weeks: '3 weeks', format: '1-hr', body: 'Students make their own paints, working from pigment and binder to a usable medium.  They will also learn several principles of color theory, ' },
-  { id: 3, range: 'Unit 03', title: 'Geopolymer & Cementitious Materials and Sculpting', weeks: '5 weeks', format: '1-hr ×3 + 2-hr studio day (mix & cast)', body: 'Plaster, geopolymer, and cement, ending in a studio day for casting.' },
-  { id: 4, range: 'Unit 04', title: 'Layers, Light & Texture', weeks: '4 weeks', format: '1-hr', body: 'Experiments with light and layered surfaces built on the materials made earlier in the course.' },
-  { id: 5, range: 'Unit 05', title: 'Final Project', weeks: '2 weeks', format: '2-hr studio day (plan + make)', body: 'A single extended session to plan and make a final piece.' },
+  { id: 1, range: 'Unit 01', title: 'Drawing Foundations', weeks: '3 weeks', format: '1-hr', body: 'Seeing, form, light, value and composition, moving from observation into Surrealism.', image: './images/unit-1.webp' },
+  { id: 2, range: 'Unit 02', title: 'Color + Paint', weeks: '2 weeks', format: '1-hr', body: 'Color theory, egg tempera and handmade casein paint.', image: './images/unit-2.webp' },
+  { id: 3, range: 'Unit 03', title: 'Mixed Media + Surface', weeks: '3 weeks', format: '1-hr', body: 'Layering, collage, composition and relief.', image: './images/unit-3.webp' },
+  { id: 4, range: 'Unit 04', title: 'Form, Light + Process', weeks: '4 weeks', format: '1-hr', body: 'Plaster casting, gold leaf and printmaking.', image: './images/unit-4.webp' },
+  { id: 5, range: 'Unit 05', title: 'Final Project', weeks: '4 weeks', format: '1-hr + studio time', body: 'A month of self-directed work, from concept to critique.' },
 ];
 
 class Component extends DCLogic {
