@@ -1,7 +1,7 @@
 # Art Lab Studio site: handoff
 
 **Repo:** `yitzhach/ART-LAB`, branch `main`. The old `yitzhach/ARTLAB` repo was deleted.
-**Hosting:** a Cloudflare Worker named `artlab-syllabus` (`wrangler.jsonc`) serves the static files at the repo root. It's connected to GitHub, so a push to `main` should deploy. If it doesn't, check which repo is linked under Workers → `artlab-syllabus` → Settings → Build.
+**Hosting:** a Cloudflare Worker named `artlab-syllabus` (`wrangler.jsonc`) serves the static files at the repo root. Live at **https://artlab.isaacandersonart.com/**. It's connected to GitHub, so a push to `main` should deploy. If it doesn't, check which repo is linked under Workers → `artlab-syllabus` → Settings → Build.
 **Workflow:** the site is designed in a separate design tool, exported as a zip, and uploaded to GitHub through the web.
 
 ## Pages (keep clean URLs in links)
