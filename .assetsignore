@@ -3,3 +3,4 @@
 .claude/
 src/
 wrangler.jsonc
+*.zip
