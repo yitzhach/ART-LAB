@@ -10,10 +10,12 @@
 | Home (hero, gallery, contact form) | `index.html` | `/` |
 | Course & Syllabus (units 1–5 with photos) | `course-and-syllabus.html` | `/course-and-syllabus` |
 | Full Syllabus (PDF download) | `syllabus.html` | `/syllabus` |
+| Weekly Assignments (class recaps, handouts, photos, materials) | `assignments.html` | `/assignments` |
 | Enroll & Pay (the payment fields are a placeholder) | `enroll-and-pay.html` | `/enroll-and-pay` |
 | Materials & Supplies | `materials-and-supplies.html` | `/materials-and-supplies` |
 
 - The unit photos come from `images/unit-1…5.webp`. Each unit's photo is set in the `image:` field of its entry in the `units` array near the bottom of `course-and-syllabus.html`.
+- The Weekly Assignments page is plain HTML (not from the design tool). Its content is all in `assignment-files/weeks.js`: set `currentWeek`, and per week add `date`, `recap` paragraphs, `files` (PDFs in `assignment-files/pdfs/`) and `photos` (images in `assignment-files/photos/`). Materials are pre-filled from the syllabus. It's linked from the home menu, the home Syllabus cards, and the menus on the other pages; re-add those links if a design-tool upload overwrites them.
 - The home gallery uses `images/gallery-101…106.png`.
 - `support.js` and `image-slot.js` are rendering scripts from the design tool. Don't edit them.
 - `src/worker.js` handles `POST /api/contact`. It emails form submissions through Resend to isaac@isaacandersonart.com and needs the `RESEND_API_KEY` secret. The From address is still `onboarding@resend.dev`; switch it once the domain is verified.

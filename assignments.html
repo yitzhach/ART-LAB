@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Assignments — Art Lab Studio</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f7f6f2; --surface:#ece9e2; --text:#181614; --muted:#5c5954;
+    --divider:#dedad2; --divider-strong:#b8b2a5; --accent:#cc4125;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#15141a; --surface:#232028; --text:#f2f0eb; --muted:#a8a4a0;
+      --divider:#332f38; --divider-strong:#4a4550; --accent:#e2573a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); }
+  a.al-link { color:var(--text); text-decoration:none; }
+  a.al-link:hover { color:var(--accent); }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .wrap { max-width:1280px; margin:0 auto; padding-left:clamp(16px,5vw,72px); padding-right:clamp(16px,5vw,72px); }
+  .display { font-family:'Archivo Black',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:-0.01em; }
+  .eyebrow { font-size:12px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); }
+  .nav-link { font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+  .btn { display:inline-block; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:14px 28px; border-radius:3px; text-decoration:none; cursor:pointer; border:1px solid var(--accent); background:var(--accent); color:#fff; font-family:inherit; }
+  .btn.ghost { background:transparent; color:var(--text); border-color:var(--divider-strong); }
+
+  header { position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:1px solid var(--divider); }
+  header nav { display:flex; align-items:center; justify-content:space-between; gap:16px 24px; flex-wrap:wrap; padding-top:20px; padding-bottom:20px; }
+  header .links { display:flex; gap:12px 28px; flex-wrap:wrap; }
+
+  .week-jump { display:flex; flex-wrap:wrap; gap:8px; margin:32px 0 0; padding:0; list-style:none; }
+  .week-jump a { display:flex; align-items:center; justify-content:center; min-width:44px; height:44px; padding:0 10px; border:1px solid var(--divider-strong); border-radius:3px; font-size:13px; font-weight:700; color:var(--text); text-decoration:none; }
+  .week-jump a:hover { border-color:var(--accent); color:var(--accent); }
+  .week-jump a.posted { background:var(--surface); }
+  .week-jump a.current { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+  .week { border-top:1px solid var(--divider); padding:48px 0; scroll-margin-top:90px; }
+  .week-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px 24px; flex-wrap:wrap; margin-bottom:24px; }
+  .week h2 { font-size:clamp(24px,3.4vw,36px); margin:6px 0 0; line-height:1.05; }
+  .week .topic { color:var(--muted); font-size:16px; margin:8px 0 0; }
+  .tag { font-size:11px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:6px 10px; border-radius:3px; border:1px solid var(--divider-strong); color:var(--muted); white-space:nowrap; }
+  .tag.current { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .tag.posted { color:var(--text); }
+
+  .grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:40px; }
+  @media (max-width:800px) { .grid { grid-template-columns:minmax(0,1fr); gap:32px; } }
+  h3 { font-size:12px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
+  .block + .block { margin-top:32px; }
+  .recap p { font-size:17px; line-height:1.6; margin:0 0 14px; max-width:65ch; }
+
+  .files { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .files a { display:flex; align-items:center; gap:12px; padding:14px 16px; border:1px solid var(--divider); border-radius:3px; color:var(--text); text-decoration:none; font-size:15px; font-weight:600; }
+  .files a:hover { border-color:var(--accent); }
+  .files svg { flex:0 0 auto; color:var(--accent); }
+  .files .kind { margin-left:auto; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+
+  .photos { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+  .photos figure { margin:0; }
+  .photos a { display:block; aspect-ratio:4/3; overflow:hidden; border-radius:3px; background:var(--surface); }
+  .photos img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .2s; }
+  .photos a:hover img { transform:scale(1.03); }
+  .photos figcaption { font-size:13px; color:var(--muted); margin-top:6px; line-height:1.4; }
+
+  .materials { margin:0; padding:20px 20px 20px 38px; background:var(--surface); border-radius:3px; font-size:15px; line-height:1.7; }
+
+  .placeholder { color:var(--muted); font-size:15px; margin:0; padding:20px; border:1px dashed var(--divider-strong); border-radius:3px; }
+
+  dialog.lightbox { border:none; padding:0; background:transparent; max-width:94vw; max-height:94vh; }
+  dialog.lightbox::backdrop { background:rgba(10,9,8,.88); }
+  dialog.lightbox img { display:block; max-width:94vw; max-height:84vh; object-fit:contain; }
+  dialog.lightbox p { color:#f2f0eb; text-align:center; margin:10px 0 0; font-size:14px; }
+  dialog.lightbox button { position:fixed; top:16px; right:16px; width:44px; height:44px; border-radius:3px; border:1px solid #4a4550; background:#15141a; color:#f2f0eb; font-size:22px; cursor:pointer; }
+
+  footer { border-top:1px solid var(--divider); padding-top:32px; padding-bottom:48px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="/" class="al-link display" style="font-size:15px;letter-spacing:0.01em">ART LAB STUDIO</a>
+    <div class="links">
+      <a href="/" class="al-link nav-link">Home</a>
+      <a href="/course-and-syllabus" class="al-link nav-link">Course</a>
+      <a href="/syllabus" class="al-link nav-link">Syllabus</a>
+      <a href="/assignments" class="al-link nav-link" style="color:var(--accent)" aria-current="page">Assignments</a>
+      <a href="/enroll-and-pay" class="al-link nav-link">Enroll &amp; Pay</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap" style="padding-top:clamp(40px,7vw,88px);padding-bottom:40px">
+    <div class="eyebrow" style="margin-bottom:16px">Art Lab: Foundations / Fall semester</div>
+    <h1 class="display" style="font-size:clamp(40px,8vw,96px);line-height:0.98;margin:0 0 20px">Weekly Assignments</h1>
+    <p style="font-size:18px;line-height:1.55;color:var(--muted);max-width:60ch;margin:0 0 28px">A recap of each class, plus the handouts, assignments and materials for the week. New weeks are added as the semester goes.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#" id="go-current" class="btn" hidden>Go to this week</a>
+      <a href="/syllabus" class="btn ghost">Full syllabus</a>
+    </div>
+    <ul class="week-jump" id="week-jump" aria-label="Jump to a week"></ul>
+  </section>
+
+  <div class="wrap" id="weeks"></div>
+</main>
+
+<div class="wrap">
+  <footer>
+    <a href="/" class="al-link" style="font-size:12px;letter-spacing:0.04em;color:var(--muted)">Back to home</a>
+    <a href="https://isaacandersonart.com" target="_blank" rel="noopener noreferrer" class="al-link" style="font-size:12px;letter-spacing:0.04em;color:var(--muted)">isaacandersonart.com</a>
+  </footer>
+</div>
+
+<dialog class="lightbox" id="lightbox">
+  <button type="button" aria-label="Close" id="lightbox-close">&times;</button>
+  <img alt="" id="lightbox-img">
+  <p id="lightbox-cap"></p>
+</dialog>
+
+<script src="/assignment-files/weeks.js"></script>
+<script>
+(function () {
+  var data = window.ASSIGNMENTS || { currentWeek: 0, weeks: [] };
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+  var el = function (tag, attrs, children) {
+    var node = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === 'text') node.textContent = attrs[k];
+      else if (k === 'class') node.className = attrs[k];
+      else node.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) { if (c) node.appendChild(c); });
+    return node;
+  };
+  var fileIcon = function () {
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('width', '22'); svg.setAttribute('height', '22');
+    svg.setAttribute('viewBox', '0 0 256 256'); svg.setAttribute('fill', 'currentColor');
+    svg.setAttribute('aria-hidden', 'true');
+    var p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', 'M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z');
+    svg.appendChild(p);
+    return svg;
+  };
+
+  var jump = document.getElementById('week-jump');
+  var container = document.getElementById('weeks');
+  var lightbox = document.getElementById('lightbox');
+
+  data.weeks.forEach(function (w) {
+    var recap = w.recap || [], files = w.files || [], photos = w.photos || [], materials = w.materials || [];
+    var isCurrent = w.week === data.currentWeek;
+    var isPosted = recap.length || files.length || photos.length;
+    var status = isCurrent ? 'current' : isPosted ? 'posted' : 'soon';
+    var id = 'week-' + pad(w.week);
+
+    jump.appendChild(el('li', {}, [el('a', {
+      href: '#' + id,
+      class: status === 'soon' ? '' : status,
+      'aria-label': 'Week ' + w.week + (isCurrent ? ' (this week)' : ''),
+      text: pad(w.week)
+    })]));
+
+    var left = el('div');
+    var right = el('div');
+
+    if (!isPosted) {
+      left.appendChild(el('p', { class: 'placeholder', text: 'Recap and assignments will be posted after class.' }));
+    }
+    if (recap.length) {
+      left.appendChild(el('div', { class: 'block recap' }, [el('h3', { text: 'Class recap' })].concat(
+        recap.map(function (p) { return el('p', { text: p }); }))));
+    }
+    if (photos.length) {
+      left.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'From class' }), el('div', { class: 'photos' },
+        photos.map(function (ph) {
+          var a = el('a', { href: ph.src }, [el('img', { src: ph.src, alt: ph.caption || ('Week ' + w.week + ' photo'), loading: 'lazy' })]);
+          a.addEventListener('click', function (e) {
+            if (!lightbox.showModal) return;
+            e.preventDefault();
+            document.getElementById('lightbox-img').src = ph.src;
+            document.getElementById('lightbox-img').alt = ph.caption || '';
+            document.getElementById('lightbox-cap').textContent = ph.caption || '';
+            lightbox.showModal();
+          });
+          return el('figure', {}, [a, ph.caption ? el('figcaption', { text: ph.caption }) : null]);
+        }))]));
+    }
+    if (files.length) {
+      right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Assignments & handouts' }), el('ul', { class: 'files' },
+        files.map(function (f) {
+          var ext = (f.href.split('?')[0].split('.').pop() || '').toUpperCase();
+          return el('li', {}, [el('a', { href: f.href, target: '_blank', rel: 'noopener' },
+            [fileIcon(), el('span', { text: f.label }), el('span', { class: 'kind', text: ext })])]);
+        }))]));
+    }
+    if (materials.length) {
+      right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Materials' }), el('ul', { class: 'materials' },
+        materials.map(function (m) { return el('li', { text: cap(m) }); }))]));
+    }
+
+    var tagText = status === 'current' ? 'This week' : status === 'posted' ? 'Posted' : 'Coming soon';
+    container.appendChild(el('section', { class: 'week', id: id, 'aria-labelledby': id + '-title' }, [
+      el('div', { class: 'week-head' }, [
+        el('div', {}, [
+          el('div', { class: 'eyebrow', text: 'Week ' + pad(w.week) + (w.date ? ' · ' + w.date : '') }),
+          el('h2', { class: 'display', id: id + '-title', text: w.title }),
+          w.topic ? el('p', { class: 'topic', text: w.topic }) : null
+        ]),
+        el('span', { class: 'tag ' + status, text: tagText })
+      ]),
+      el('div', { class: 'grid' }, [left, right])
+    ]));
+  });
+
+  if (data.currentWeek) {
+    var go = document.getElementById('go-current');
+    go.href = '#week-' + pad(data.currentWeek);
+    go.hidden = false;
+  }
+
+  document.getElementById('lightbox-close').addEventListener('click', function () { lightbox.close(); });
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) lightbox.close(); });
+
+  if (location.hash) {
+    var target = document.querySelector(location.hash);
+    if (target) target.scrollIntoView();
+  }
+})();
+</script>
+</body>
+</html>
