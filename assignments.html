@@ -59,6 +59,7 @@
   .files { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
   .files a { display:flex; align-items:center; gap:12px; padding:14px 16px; border:1px solid var(--divider); border-radius:3px; color:var(--text); text-decoration:none; font-size:15px; font-weight:600; }
   .files a:hover { border-color:var(--accent); }
+  .files .thumb { flex:0 0 auto; width:44px; height:58px; object-fit:cover; object-position:top; border-radius:2px; border:1px solid var(--divider); }
   .files svg { flex:0 0 auto; color:var(--accent); }
   .files .kind { margin-left:auto; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); font-weight:700; }
 
@@ -200,8 +201,10 @@
       right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Assignments & handouts' }), el('ul', { class: 'files' },
         files.map(function (f) {
           var ext = (f.href.split('?')[0].split('.').pop() || '').toUpperCase();
+          var isImg = /^(WEBP|JPE?G|PNG|GIF)$/.test(ext);
+          var icon = isImg ? el('img', { src: f.href, alt: '', loading: 'lazy', class: 'thumb' }) : fileIcon();
           return el('li', {}, [el('a', { href: f.href, target: '_blank', rel: 'noopener' },
-            [fileIcon(), el('span', { text: f.label }), el('span', { class: 'kind', text: ext })])]);
+            [icon, el('span', { text: f.label }), el('span', { class: 'kind', text: isImg ? 'Handout' : ext })])]);
         }))]));
     }
     if (materials.length) {

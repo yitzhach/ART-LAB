@@ -4,7 +4,7 @@
 // For each week:
 //   date:      e.g. "Sept 30" (optional)
 //   recap:     list of paragraphs, e.g. ["We started with...", "Next week..."]
-//   files:     PDFs/handouts, e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
+//   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
 //   materials: list of items to bring
 // A week with no recap, files or photos shows as "Coming soon".
@@ -59,7 +59,13 @@ window.ASSIGNMENTS = {
       topic: "Paint is made",
       date: "",
       recap: [],
-      files: [],
+      files: [
+        { label: "Make your own casein paint", href: "/assignment-files/handouts/casein-paint.webp" },
+        { label: "Make clay & wheat-paste paint", href: "/assignment-files/handouts/clay-wheat-paste-paint.webp" },
+        { label: "Make Swedish-style flour paint", href: "/assignment-files/handouts/swedish-flour-paint.webp" },
+        { label: "Try soy-milk paint", href: "/assignment-files/handouts/soy-milk-paint.webp" },
+        { label: "Make starch paint", href: "/assignment-files/handouts/starch-paint.webp" },
+      ],
       photos: [],
       materials: ["Casein binder","pigment pastes","illustration board or cardboard","brushes"],
     },
