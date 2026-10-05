@@ -63,10 +63,13 @@ window.ASSIGNMENTS = {
       recap: [],
       files: [
         { label: "Make your own casein paint", href: "/assignment-files/handouts/casein-paint.webp" },
+        { label: "From nonfat milk to casein paint", href: "/assignment-files/handouts/nonfat-milk-to-casein-paint.webp" },
         { label: "Make clay & wheat-paste paint", href: "/assignment-files/handouts/clay-wheat-paste-paint.webp" },
         { label: "Make Swedish-style flour paint", href: "/assignment-files/handouts/swedish-flour-paint.webp" },
         { label: "Try soy-milk paint", href: "/assignment-files/handouts/soy-milk-paint.webp" },
         { label: "Make starch paint", href: "/assignment-files/handouts/starch-paint.webp" },
+        { label: "Make egg tempera", href: "/assignment-files/handouts/egg-tempera.webp" },
+        { label: "Make a pantry color palette", href: "/assignment-files/handouts/pantry-color-palette.webp" },
       ],
       photos: [],
       materials: ["Casein binder","pigment pastes","illustration board or cardboard","brushes"],
