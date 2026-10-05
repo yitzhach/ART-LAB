@@ -65,7 +65,7 @@ window.ASSIGNMENTS = {
         steps: [
           "Make your own paint using a binder that you make. See the examples and recipes on this page.",
           "Add a pigment that you source yourself: plant-based, iron oxide, spice, charcoal, coffee, etc.",
-          "Create 3 or more colors and use them to make an abstract painting. It can be on mixed media paper, cardboard, an Amazon envelope, etc.",
+          "Create 3 or more colors and use them to make an abstract painting. It can be on mixed media paper, cardboard, an “Amazon envelope,” etc.",
         ],
         note: "Optional: include other mixed media elements, such as collage, found objects or fiber.",
       },
