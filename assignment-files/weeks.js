@@ -3,6 +3,7 @@
 // currentWeek: the week marked "This week" (0 = none yet).
 // For each week:
 //   date:      e.g. "Sept 30" (optional)
+//   due:       e.g. "Due before Week 6" (optional, shown above the handouts)
 //   recap:     list of paragraphs, e.g. ["We started with...", "Next week..."]
 //   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
@@ -11,7 +12,7 @@
 // Put uploaded PDFs in assignment-files/pdfs/ and images in assignment-files/photos/.
 
 window.ASSIGNMENTS = {
-  currentWeek: 0,
+  currentWeek: 5,
   weeks: [
     {
       week: 1,
@@ -58,6 +59,7 @@ window.ASSIGNMENTS = {
       title: "Pigment + Casein Paint",
       topic: "Paint is made",
       date: "",
+      due: "Due before Week 6",
       recap: [],
       files: [
         { label: "Make your own casein paint", href: "/assignment-files/handouts/casein-paint.webp" },
