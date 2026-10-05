@@ -4,6 +4,7 @@
 // For each week:
 //   date:      e.g. "Sept 30" (optional)
 //   due:       e.g. "Due before Week 6" (optional, shown above the handouts)
+//   assignment: { steps: ["...", "..."], note: "..." } (optional, shown first)
 //   recap:     list of paragraphs, e.g. ["We started with...", "Next week..."]
 //   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
@@ -60,6 +61,14 @@ window.ASSIGNMENTS = {
       topic: "Paint is made",
       date: "",
       due: "Due before Week 6",
+      assignment: {
+        steps: [
+          "Make your own paint using a binder that you make. See the examples and recipes on this page.",
+          "Add a pigment that you source yourself: plant-based, iron oxide, spice, charcoal, coffee, etc.",
+          "Create 3 or more colors and use them to make an abstract painting. It can be on mixed media paper, cardboard, an Amazon envelope, etc.",
+        ],
+        note: "Optional: include other mixed media elements, such as collage, found objects or fiber.",
+      },
       recap: [],
       files: [
         { label: "Make your own casein paint", href: "/assignment-files/handouts/casein-paint.webp" },

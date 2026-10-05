@@ -75,11 +75,37 @@
 
   .placeholder { color:var(--muted); font-size:15px; margin:0; padding:20px; border:1px dashed var(--divider-strong); border-radius:3px; }
 
-  dialog.lightbox { border:none; padding:0; background:transparent; max-width:94vw; max-height:94vh; }
-  dialog.lightbox::backdrop { background:rgba(10,9,8,.88); }
-  dialog.lightbox img { display:block; max-width:94vw; max-height:84vh; object-fit:contain; }
-  dialog.lightbox p { color:#f2f0eb; text-align:center; margin:10px 0 0; font-size:14px; }
-  dialog.lightbox button { position:fixed; top:16px; right:16px; width:44px; height:44px; border-radius:3px; border:1px solid #4a4550; background:#15141a; color:#f2f0eb; font-size:22px; cursor:pointer; }
+  .assignment { background:var(--surface); border-left:4px solid var(--accent); border-radius:3px; padding:22px 24px; }
+  .assignment ol { margin:0; padding-left:22px; font-size:17px; line-height:1.6; }
+  .assignment li + li { margin-top:10px; }
+  .assignment .note { margin:14px 0 0; font-size:15px; line-height:1.55; color:var(--muted); }
+  .assignment .due { margin:0 0 12px; }
+
+  .files li { display:flex; gap:8px; }
+  .files li > a.open { flex:1 1 auto; min-width:0; }
+  .files a.dl { flex:0 0 auto; width:52px; justify-content:center; padding:0; color:var(--muted); }
+  .files a.dl:hover { color:var(--accent); }
+
+  dialog.viewer { border:none; padding:0; margin:0; width:100vw; height:100vh; height:100dvh; max-width:none; max-height:none; background:rgba(10,9,8,.94); color:#f2f0eb; }
+  dialog.viewer::backdrop { background:rgba(10,9,8,.94); }
+  .viewer-inner { display:flex; flex-direction:column; height:100%; }
+  .viewer-bar { display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid #332f38; }
+  .viewer-title { flex:1 1 auto; min-width:0; font-size:15px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .viewer-count { font-size:12px; font-weight:700; letter-spacing:0.06em; color:#a8a4a0; white-space:nowrap; }
+  .vbtn { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; min-width:44px; padding:0 14px; border-radius:3px; border:1px solid #4a4550; background:#15141a; color:#f2f0eb; font:700 12px 'Inter',sans-serif; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; cursor:pointer; }
+  .vbtn:hover { border-color:#e2573a; }
+  .vbtn.primary { background:#e2573a; border-color:#e2573a; color:#fff; }
+  .viewer-stage { position:relative; flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; padding:16px 72px; }
+  .viewer-stage img { max-width:100%; max-height:100%; object-fit:contain; display:block; background:#fff; }
+  .viewer-nav { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:64px; font-size:28px; padding:0; }
+  .viewer-nav.prev { left:12px; } .viewer-nav.next { right:12px; }
+  .viewer-hint { text-align:center; font-size:12px; color:#a8a4a0; padding:0 16px 12px; }
+  @media (max-width:640px) {
+    .viewer-stage { padding:8px; }
+    .viewer-nav { top:auto; bottom:8px; transform:none; opacity:.9; }
+    .vbtn .lbl { display:none; }
+    .viewer-hint { display:none; }
+  }
 
   footer { border-top:1px solid var(--divider); padding-top:32px; padding-bottom:48px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 </style>
@@ -121,10 +147,21 @@
   </footer>
 </div>
 
-<dialog class="lightbox" id="lightbox">
-  <button type="button" aria-label="Close" id="lightbox-close">&times;</button>
-  <img alt="" id="lightbox-img">
-  <p id="lightbox-cap"></p>
+<dialog class="viewer" id="viewer" aria-label="Handout viewer">
+  <div class="viewer-inner">
+    <div class="viewer-bar">
+      <span class="viewer-count" id="viewer-count"></span>
+      <span class="viewer-title" id="viewer-title"></span>
+      <a class="vbtn primary" id="viewer-dl" download><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"></path></svg><span class="lbl">Download</span></a>
+      <button type="button" class="vbtn" id="viewer-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="viewer-stage" id="viewer-stage">
+      <button type="button" class="vbtn viewer-nav prev" id="viewer-prev" aria-label="Previous">&#8249;</button>
+      <img alt="" id="viewer-img">
+      <button type="button" class="vbtn viewer-nav next" id="viewer-next" aria-label="Next">&#8250;</button>
+    </div>
+    <div class="viewer-hint">Use the &larr; &rarr; arrow keys to flip through. Esc to close.</div>
+  </div>
 </dialog>
 
 <script src="/assignment-files/weeks.js"></script>
@@ -155,14 +192,71 @@
     return svg;
   };
 
+  var dlIcon = function () {
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('width', '20'); svg.setAttribute('height', '20');
+    svg.setAttribute('viewBox', '0 0 256 256'); svg.setAttribute('fill', 'currentColor');
+    svg.setAttribute('aria-hidden', 'true');
+    var p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', 'M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z');
+    svg.appendChild(p);
+    return svg;
+  };
+  var fileName = function (label, href) {
+    var ext = href.split('?')[0].split('.').pop();
+    return label.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.' + ext;
+  };
+
+  // Full-screen viewer: flip through a week's images with arrow keys, swipe or buttons.
+  var viewer = document.getElementById('viewer');
+  var vImg = document.getElementById('viewer-img');
+  var vItems = [], vIndex = 0;
+  var show = function (i) {
+    vIndex = (i + vItems.length) % vItems.length;
+    var it = vItems[vIndex];
+    vImg.src = it.src; vImg.alt = it.title;
+    document.getElementById('viewer-title').textContent = it.title;
+    document.getElementById('viewer-count').textContent = (vIndex + 1) + ' / ' + vItems.length;
+    var dl = document.getElementById('viewer-dl');
+    dl.href = it.src; dl.setAttribute('download', fileName(it.title, it.src));
+    var multi = vItems.length > 1;
+    document.getElementById('viewer-prev').hidden = !multi;
+    document.getElementById('viewer-next').hidden = !multi;
+    [vIndex - 1, vIndex + 1].forEach(function (n) { if (multi) new Image().src = vItems[(n + vItems.length) % vItems.length].src; });
+  };
+  var openViewer = function (items, i) {
+    if (!viewer.showModal) return false;
+    vItems = items; show(i);
+    if (!viewer.open) viewer.showModal();
+    return true;
+  };
+  document.getElementById('viewer-prev').addEventListener('click', function () { show(vIndex - 1); });
+  document.getElementById('viewer-next').addEventListener('click', function () { show(vIndex + 1); });
+  document.getElementById('viewer-close').addEventListener('click', function () { viewer.close(); });
+  document.getElementById('viewer-stage').addEventListener('click', function (e) { if (e.target.id === 'viewer-stage') viewer.close(); });
+  viewer.addEventListener('close', function () { vImg.removeAttribute('src'); });
+  document.addEventListener('keydown', function (e) {
+    if (!viewer.open) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(vIndex - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); show(vIndex + 1); }
+  });
+  var touchX = null;
+  viewer.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX; touchX = null;
+    if (Math.abs(dx) > 50 && vItems.length > 1) show(vIndex + (dx < 0 ? 1 : -1));
+  });
+
   var jump = document.getElementById('week-jump');
   var container = document.getElementById('weeks');
-  var lightbox = document.getElementById('lightbox');
 
   data.weeks.forEach(function (w) {
+    var assignment = w.assignment || null;
     var recap = w.recap || [], files = w.files || [], photos = w.photos || [], materials = w.materials || [];
     var isCurrent = w.week === data.currentWeek;
-    var isPosted = recap.length || files.length || photos.length;
+    var isPosted = assignment || recap.length || files.length || photos.length;
     var status = isCurrent ? 'current' : isPosted ? 'posted' : 'soon';
     var id = 'week-' + pad(w.week);
 
@@ -179,6 +273,13 @@
     if (!isPosted) {
       left.appendChild(el('p', { class: 'placeholder', text: 'Recap and assignments will be posted after class.' }));
     }
+    if (assignment) {
+      left.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'The assignment' }), el('div', { class: 'assignment' }, [
+        w.due ? el('p', { class: 'due', text: w.due }) : null,
+        el('ol', {}, (assignment.steps || []).map(function (t) { return el('li', { text: t }); })),
+        assignment.note ? el('p', { class: 'note', text: assignment.note }) : null
+      ])]));
+    }
     if (recap.length) {
       left.appendChild(el('div', { class: 'block recap' }, [el('h3', { text: 'Class recap' })].concat(
         recap.map(function (p) { return el('p', { text: p }); }))));
@@ -186,26 +287,32 @@
     if (photos.length) {
       left.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'From class' }), el('div', { class: 'photos' },
         photos.map(function (ph) {
-          var a = el('a', { href: ph.src }, [el('img', { src: ph.src, alt: ph.caption || ('Week ' + w.week + ' photo'), loading: 'lazy' })]);
+          var a = el('a', { href: ph.src, 'data-i': photos.indexOf(ph) }, [el('img', { src: ph.src, alt: ph.caption || ('Week ' + w.week + ' photo'), loading: 'lazy' })]);
           a.addEventListener('click', function (e) {
-            if (!lightbox.showModal) return;
-            e.preventDefault();
-            document.getElementById('lightbox-img').src = ph.src;
-            document.getElementById('lightbox-img').alt = ph.caption || '';
-            document.getElementById('lightbox-cap').textContent = ph.caption || '';
-            lightbox.showModal();
+            var items = photos.map(function (x, n) { return { src: x.src, title: x.caption || ('Week ' + w.week + ' photo ' + (n + 1)) }; });
+            if (openViewer(items, photos.indexOf(ph))) e.preventDefault();
           });
           return el('figure', {}, [a, ph.caption ? el('figcaption', { text: ph.caption }) : null]);
         }))]));
     }
     if (files.length) {
-      right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Assignments & handouts' }), w.due ? el('p', { class: 'due', text: w.due }) : null, el('ul', { class: 'files' },
+      var isImage = function (f) { return /\.(webp|jpe?g|png|gif)$/i.test(f.href.split('?')[0]); };
+      var imgFiles = files.filter(isImage);
+      right.appendChild(el('div', { class: 'block' }, [el('h3', { text: assignment ? 'Examples & recipes' : 'Assignments & handouts' }), !assignment && w.due ? el('p', { class: 'due', text: w.due }) : null,
+        imgFiles.length > 1 ? el('p', { class: 'topic', style: 'margin:-6px 0 14px;font-size:14px', text: 'Click any handout, then use the arrow keys to flip through them all.' }) : null,
+        el('ul', { class: 'files' },
         files.map(function (f) {
           var ext = (f.href.split('?')[0].split('.').pop() || '').toUpperCase();
           var isImg = /^(WEBP|JPE?G|PNG|GIF)$/.test(ext);
           var icon = isImg ? el('img', { src: f.href, alt: '', loading: 'lazy', class: 'thumb' }) : fileIcon();
-          return el('li', {}, [el('a', { href: f.href, target: '_blank', rel: 'noopener' },
-            [icon, el('span', { text: f.label }), el('span', { class: 'kind', text: isImg ? 'Handout' : ext })])]);
+          var open = el('a', { href: f.href, target: '_blank', rel: 'noopener', class: 'open' },
+            [icon, el('span', { text: f.label }), el('span', { class: 'kind', text: isImg ? 'Handout' : ext })]);
+          if (isImg) open.addEventListener('click', function (e) {
+            var items = imgFiles.map(function (x) { return { src: x.href, title: x.label }; });
+            if (openViewer(items, imgFiles.indexOf(f))) e.preventDefault();
+          });
+          var dl = el('a', { href: f.href, download: fileName(f.label, f.href), class: 'dl', 'aria-label': 'Download ' + f.label, title: 'Download' }, [dlIcon()]);
+          return el('li', {}, [open, dl]);
         }))]));
     }
     if (materials.length) {
@@ -233,8 +340,6 @@
     go.hidden = false;
   }
 
-  document.getElementById('lightbox-close').addEventListener('click', function () { lightbox.close(); });
-  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) lightbox.close(); });
 
   if (location.hash) {
     var target = document.querySelector(location.hash);
