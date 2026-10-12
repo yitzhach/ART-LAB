@@ -110,6 +110,8 @@ window.ASSIGNMENTS = {
         { src: "/assignment-files/photos/week-06-rauschenberg-3.webp", caption: "Robert Rauschenberg, Combine" },
         { src: "/assignment-files/photos/week-06-rauschenberg-4.webp", caption: "Robert Rauschenberg, silkscreen paintings (Tate Modern)" },
         { src: "/assignment-files/photos/week-06-rauschenberg-5.webp", caption: "Robert Rauschenberg, mixed media collage" },
+        { src: "/assignment-files/photos/week-06-misc-1.webp", caption: "Textured mixed media painting" },
+        { src: "/assignment-files/photos/week-06-kiefer-1.webp", caption: "Anselm Kiefer, pine needles and paint on canvas" },
       ],
       materials: ["Glue","scissors","collage papers","found materials","casein paints"],
     },
