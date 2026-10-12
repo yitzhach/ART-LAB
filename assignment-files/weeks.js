@@ -8,6 +8,7 @@
 //   recap:     list of paragraphs, e.g. ["We started with...", "Next week..."]
 //   recapTitle: heading for the recap block (optional, default "Class recap")
 //   links:     links shown under the recap, e.g. { label: "Artist site", href: "https://..." }
+//              YouTube links get a thumbnail automatically; add thumb: "/path.webp" to use your own
 //   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
 //   materials: list of items to bring
@@ -100,8 +101,7 @@ window.ASSIGNMENTS = {
       links: [
         { label: "Robert Rauschenberg (video)", href: "https://youtu.be/DGuo2oW-6_8?si=v2ZJFg8FSZM6M7Gd" },
         { label: "William Catling", href: "https://williamcatling.com/" },
-        { label: "Misc. mixed media tutorial (video)", href: "https://www.youtube.com/watch?v=wA3HQH6gD8M&list=PLUE608AhaUzo" },
-        { label: "Creating texture with your paint (video)", href: "https://www.youtube.com/watch?v=hxujbDVFGWI&list=PLUE608AhaUzo&index=3" },
+        { label: "Misc. mixed media tutorial (video)", href: "https://www.youtube.com/watch?v=wA3HQH6gD8M&list=PLUE608AhaUzo", thumb: "/assignment-files/photos/week-06-mixed-media-tutorial-thumb.webp" },
       ],
       files: [],
       photos: [
