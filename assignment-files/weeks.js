@@ -110,6 +110,8 @@ window.ASSIGNMENTS = {
         { src: "/assignment-files/photos/week-06-rauschenberg-3.webp", caption: "Robert Rauschenberg, Combine" },
         { src: "/assignment-files/photos/week-06-rauschenberg-4.webp", caption: "Robert Rauschenberg, silkscreen paintings (Tate Modern)" },
         { src: "/assignment-files/photos/week-06-rauschenberg-5.webp", caption: "Robert Rauschenberg, mixed media collage" },
+        { src: "/assignment-files/photos/week-06-monogram-1.jpg", caption: "Robert Rauschenberg, Monogram (1955–59)" },
+        { src: "/assignment-files/photos/week-06-monogram-2.jpg", caption: "Robert Rauschenberg, Monogram (1955–59), Moderna Museet" },
         { src: "/assignment-files/photos/week-06-misc-1.webp", caption: "Textured mixed media painting" },
         { src: "/assignment-files/photos/week-06-kiefer-1.webp", caption: "Anselm Kiefer, pine needles and paint on canvas" },
         { src: "/assignment-files/photos/week-06-catling-1.webp", caption: "William Catling" },
