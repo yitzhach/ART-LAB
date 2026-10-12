@@ -254,9 +254,9 @@
 
   data.weeks.forEach(function (w) {
     var assignment = w.assignment || null;
-    var recap = w.recap || [], files = w.files || [], photos = w.photos || [], materials = w.materials || [];
+    var recap = w.recap || [], files = w.files || [], photos = w.photos || [], materials = w.materials || [], links = w.links || [];
     var isCurrent = w.week === data.currentWeek;
-    var isPosted = assignment || recap.length || files.length || photos.length;
+    var isPosted = assignment || links.length || recap.length || files.length || photos.length;
     var status = isCurrent ? 'current' : isPosted ? 'posted' : 'soon';
     var id = 'week-' + pad(w.week);
 
@@ -314,6 +314,10 @@
           var dl = el('a', { href: f.href, download: fileName(f.label, f.href), class: 'dl', 'aria-label': 'Download ' + f.label, title: 'Download' }, [dlIcon()]);
           return el('li', {}, [open, dl]);
         }))]));
+    }
+    if (links.length) {
+      right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Reference artists & videos' }), el('ul', { class: 'materials' },
+        links.map(function (l) { return el('li', {}, [el('a', { href: l.href, target: '_blank', rel: 'noopener', text: l.label }), l.note ? document.createTextNode(' · ' + l.note) : null]); }))]));
     }
     if (materials.length) {
       right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Materials' }), el('ul', { class: 'materials' },

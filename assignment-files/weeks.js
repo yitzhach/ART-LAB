@@ -8,6 +8,7 @@
 //   recap:     list of paragraphs, e.g. ["We started with...", "Next week..."]
 //   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
+//   links:     reference links, e.g. { label: "William Catling", href: "https://williamcatling.com/", note: "Artist website" }
 //   materials: list of items to bring
 // A week with no recap, files or photos shows as "Coming soon".
 // Put uploaded PDFs in assignment-files/pdfs/ and images in assignment-files/photos/.
@@ -88,9 +89,25 @@ window.ASSIGNMENTS = {
       title: "Mixed Media I",
       topic: "Layer + transform",
       date: "",
-      recap: [],
+      assignment: {
+        steps: [
+          "Create a single piece or, if you are feeling brave, a multi-panel art piece. Work on paper, wood, canvas, an old window, old clothing, etc. This is the art substrate you will be painting and working on.",
+          "Feel free to work “outside of the frame,” as we saw with Rauschenberg and with the Instagram artist reel we watched, who integrated string into and outside of his art pieces.",
+          "Use found objects, homemade paint/pigment, collage, photos, prints, fibers, sand, dirt, straw, flowers, and so on.",
+        ],
+      },
+      recap: [
+        "This week we looked at mixed media and the idea of the art piece as an object, not just a flat picture. We watched a video on Robert Rauschenberg and talked about how he worked outside of the frame, combining paint with found objects, fabric, wood and printed imagery.",
+        "We also looked at the work of William Catling and watched two short tutorials: one on mixed media techniques and one on creating texture with your paint.",
+      ],
       files: [],
       photos: [],
+      links: [
+        { label: "Robert Rauschenberg", href: "https://youtu.be/DGuo2oW-6_8?si=v2ZJFg8FSZM6M7Gd", note: "Video" },
+        { label: "William Catling", href: "https://williamcatling.com/", note: "Artist website" },
+        { label: "Misc. mixed media tutorial", href: "https://www.youtube.com/watch?v=wA3HQH6gD8M&list=PLUE608AhaUzo", note: "Video" },
+        { label: "Creating texture with your paint", href: "https://www.youtube.com/watch?v=hxujbDVFGWI&list=PLUE608AhaUzo&index=3", note: "Video" },
+      ],
       materials: ["Glue","scissors","collage papers","found materials","casein paints"],
     },
     {
