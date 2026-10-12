@@ -106,9 +106,9 @@ window.ASSIGNMENTS = {
       files: [],
       photos: [
         { src: "/assignment-files/photos/week-06-rauschenberg-1.webp", caption: "Robert Rauschenberg, Combine" },
-        { src: "/assignment-files/photos/week-06-rauschenberg-2.webp", caption: "Robert Rauschenberg, Combine" },
+        { src: "/assignment-files/photos/week-06-rauschenberg-2.webp", caption: "Robert Rauschenberg, Trophy III (for Jean Tinguely), 1961" },
         { src: "/assignment-files/photos/week-06-rauschenberg-3.webp", caption: "Robert Rauschenberg, Combine" },
-        { src: "/assignment-files/photos/week-06-rauschenberg-4.webp", caption: "Robert Rauschenberg, silkscreen paintings (Tate Modern)" },
+        { src: "/assignment-files/photos/week-06-rauschenberg-4.webp", caption: "Robert Rauschenberg, silkscreen paintings including Retroactive I (1964), Tate Modern" },
         { src: "/assignment-files/photos/week-06-rauschenberg-5.webp", caption: "Robert Rauschenberg, mixed media collage" },
         { src: "/assignment-files/photos/week-06-monogram-1.jpg", caption: "Robert Rauschenberg, Monogram (1955–59)" },
         { src: "/assignment-files/photos/week-06-monogram-2.jpg", caption: "Robert Rauschenberg, Monogram (1955–59), Moderna Museet" },
