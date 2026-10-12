@@ -59,6 +59,12 @@
   .recap ul.links li.video { list-style:none; margin:0 0 14px -20px; }
   .recap ul.links li.video a { display:flex; flex-direction:column; gap:6px; max-width:320px; }
   .recap ul.links .yt-thumb { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:6px; display:block; }
+  .recap ul.links .thumb-wrap { position:relative; display:block; }
+  .recap ul.links .play { position:absolute; top:50%; left:50%; width:64px; height:44px; margin:-22px 0 0 -32px; background:rgba(0,0,0,.72); border-radius:12px; transition:background .15s; }
+  .recap ul.links .play::after { content:''; position:absolute; top:50%; left:50%; margin:-10px 0 0 -6px; border-style:solid; border-width:10px 0 10px 17px; border-color:transparent transparent transparent #fff; }
+  .recap ul.links a:hover .play { background:#e00; }
+  .photos-link { margin:14px 0 0; font-size:16px; font-weight:600; }
+  .photos-link a { color:var(--accent); }
   .recap p { font-size:17px; line-height:1.6; margin:0 0 14px; max-width:65ch; }
 
   .files { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
@@ -292,8 +298,10 @@
         links.length ? [el('ul', { class: 'links' }, links.map(function (l) {
           var yt = l.href.match(/(?:youtu\.be\/|[?&]v=)([\w-]{11})/);
           var link = el('a', { href: l.href, target: '_blank', rel: 'noopener noreferrer' }, [
-            yt || l.thumb ? el('img', { src: l.thumb || 'https://i.ytimg.com/vi/' + yt[1] + '/hqdefault.jpg', alt: '', loading: 'lazy', class: 'yt-thumb' }) : null,
-            el('span', { text: l.label })]);
+            yt || l.thumb ? el('span', { class: 'thumb-wrap' }, [
+              el('img', { src: l.thumb || 'https://i.ytimg.com/vi/' + yt[1] + '/hqdefault.jpg', alt: '', loading: 'lazy', class: 'yt-thumb' }),
+              yt ? el('span', { class: 'play', 'aria-hidden': 'true' }) : null]) : null,
+            el('span', { text: (yt ? '\u25B6\uFE0E Watch: ' : '') + l.label })]);
           return el('li', { class: yt || l.thumb ? 'video' : '' }, [link]);
         }))] : [])));
     }
@@ -306,7 +314,7 @@
             if (openViewer(items, photos.indexOf(ph))) e.preventDefault();
           });
           return el('figure', {}, [a, ph.caption ? el('figcaption', { text: ph.caption }) : null]);
-        }))]));
+        }))].concat(w.photosLink ? [el('p', { class: 'photos-link' }, [el('a', { href: w.photosLink.href, target: '_blank', rel: 'noopener noreferrer', text: w.photosLink.label + ' →' })])] : [])));
     }
     if (files.length) {
       var isImage = function (f) { return /\.(webp|jpe?g|png|gif)$/i.test(f.href.split('?')[0]); };

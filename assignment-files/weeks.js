@@ -10,6 +10,7 @@
 //   links:     links shown under the recap, e.g. { label: "Artist site", href: "https://..." }
 //              YouTube links get a thumbnail automatically; add thumb: "/path.webp" to use your own
 //   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
+//   photosLink: link shown below the photos (optional), e.g. { label: "Artist site", href: "https://..." }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
 //   materials: list of items to bring
 // A week with no recap, files or photos shows as "Coming soon".
@@ -101,11 +102,11 @@ window.ASSIGNMENTS = {
         "Reference artists and images. We looked at these artists:",
       ],
       links: [
-        { label: "Robert Rauschenberg (video)", href: "https://youtu.be/DGuo2oW-6_8?si=v2ZJFg8FSZM6M7Gd" },
-        { label: "William Catling", href: "https://williamcatling.com/" },
-        { label: "Misc. mixed media tutorial (video)", href: "https://www.youtube.com/watch?v=wA3HQH6gD8M&list=PLUE608AhaUzo", thumb: "/assignment-files/photos/week-06-mixed-media-tutorial-thumb.webp" },
+        { label: "Robert Rauschenberg", href: "https://youtu.be/DGuo2oW-6_8?si=v2ZJFg8FSZM6M7Gd" },
+        { label: "Misc. mixed media tutorial", href: "https://www.youtube.com/watch?v=wA3HQH6gD8M&list=PLUE608AhaUzo", thumb: "/assignment-files/photos/week-06-mixed-media-tutorial-thumb.webp" },
       ],
       files: [],
+      photosLink: { label: "See more of William Catling’s work", href: "https://williamcatling.com/" },
       photos: [
         { src: "/assignment-files/photos/week-06-rauschenberg-1.webp", caption: "Robert Rauschenberg, Combine" },
         { src: "/assignment-files/photos/week-06-rauschenberg-2.webp", caption: "Robert Rauschenberg, Trophy III (for Jean Tinguely), 1961" },
