@@ -15,7 +15,7 @@
 // Put uploaded PDFs in assignment-files/pdfs/ and images in assignment-files/photos/.
 
 window.ASSIGNMENTS = {
-  currentWeek: 5,
+  currentWeek: 6,
   weeks: [
     {
       week: 1,
