@@ -96,6 +96,8 @@ window.ASSIGNMENTS = {
         "You will be creating a single, or if you are feeling brave, a multi-panel art piece on paper, wood, canvas, an old window, old clothing, etc. This will be the art substrate that you are painting and working on.",
         "Feel free to work “outside of the frame” as we saw with Rauschenberg, and with the IG artist reel that we watched who integrated the string into and outside of his art pieces.",
         "Use found objects, homemade paint/pigment, collage, photos, prints, fibers, sand, dirt, straw, flowers, and so on.",
+        "This is a 2-week project. Next week (Week 7) we will share our mid-project progress, and we will show the final work in Week 8.",
+        "Tip: take photos of your progress to share in next week’s class, so you don’t have to hold your piece up to your Zoom camera.",
         "Reference artists and images. We looked at these artists:",
       ],
       links: [
