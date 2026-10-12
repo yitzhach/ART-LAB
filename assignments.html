@@ -56,6 +56,9 @@
   .block + .block { margin-top:32px; }
   .recap ul.links { margin:0 0 14px; padding-left:20px; font-size:17px; line-height:1.7; }
   .recap ul.links a { color:var(--accent); }
+  .recap ul.links li.video { list-style:none; margin:0 0 14px -20px; }
+  .recap ul.links li.video a { display:flex; flex-direction:column; gap:6px; max-width:320px; }
+  .recap ul.links .yt-thumb { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:6px; display:block; }
   .recap p { font-size:17px; line-height:1.6; margin:0 0 14px; max-width:65ch; }
 
   .files { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
@@ -287,7 +290,11 @@
       left.appendChild(el('div', { class: 'block recap' }, [el('h3', { text: w.recapTitle || 'Class recap' })].concat(
         recap.map(function (p) { return el('p', { text: p }); }),
         links.length ? [el('ul', { class: 'links' }, links.map(function (l) {
-          return el('li', {}, [el('a', { href: l.href, target: '_blank', rel: 'noopener noreferrer', text: l.label })]);
+          var yt = l.href.match(/(?:youtu\.be\/|[?&]v=)([\w-]{11})/);
+          var link = el('a', { href: l.href, target: '_blank', rel: 'noopener noreferrer' }, [
+            yt ? el('img', { src: 'https://i.ytimg.com/vi/' + yt[1] + '/hqdefault.jpg', alt: '', loading: 'lazy', class: 'yt-thumb' }) : null,
+            el('span', { text: l.label })]);
+          return el('li', { class: yt ? 'video' : '' }, [link]);
         }))] : [])));
     }
     if (photos.length) {
