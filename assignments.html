@@ -292,9 +292,9 @@
         links.length ? [el('ul', { class: 'links' }, links.map(function (l) {
           var yt = l.href.match(/(?:youtu\.be\/|[?&]v=)([\w-]{11})/);
           var link = el('a', { href: l.href, target: '_blank', rel: 'noopener noreferrer' }, [
-            yt ? el('img', { src: 'https://i.ytimg.com/vi/' + yt[1] + '/hqdefault.jpg', alt: '', loading: 'lazy', class: 'yt-thumb' }) : null,
+            yt || l.thumb ? el('img', { src: l.thumb || 'https://i.ytimg.com/vi/' + yt[1] + '/hqdefault.jpg', alt: '', loading: 'lazy', class: 'yt-thumb' }) : null,
             el('span', { text: l.label })]);
-          return el('li', { class: yt ? 'video' : '' }, [link]);
+          return el('li', { class: yt || l.thumb ? 'video' : '' }, [link]);
         }))] : [])));
     }
     if (photos.length) {
