@@ -54,6 +54,8 @@
   @media (max-width:800px) { .grid { grid-template-columns:minmax(0,1fr); gap:32px; } }
   h3 { font-size:12px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
   .block + .block { margin-top:32px; }
+  .recap ul.links { margin:0 0 14px; padding-left:20px; font-size:17px; line-height:1.7; }
+  .recap ul.links a { color:var(--accent); }
   .recap p { font-size:17px; line-height:1.6; margin:0 0 14px; max-width:65ch; }
 
   .files { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
@@ -281,8 +283,12 @@
       ])]));
     }
     if (recap.length) {
-      left.appendChild(el('div', { class: 'block recap' }, [el('h3', { text: 'Class recap' })].concat(
-        recap.map(function (p) { return el('p', { text: p }); }))));
+      var links = w.links || [];
+      left.appendChild(el('div', { class: 'block recap' }, [el('h3', { text: w.recapTitle || 'Class recap' })].concat(
+        recap.map(function (p) { return el('p', { text: p }); }),
+        links.length ? [el('ul', { class: 'links' }, links.map(function (l) {
+          return el('li', {}, [el('a', { href: l.href, target: '_blank', rel: 'noopener noreferrer', text: l.label })]);
+        }))] : [])));
     }
     if (photos.length) {
       left.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'From class' }), el('div', { class: 'photos' },

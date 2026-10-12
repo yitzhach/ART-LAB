@@ -6,6 +6,8 @@
 //   due:       e.g. "Due before Week 6" (optional, shown above the handouts)
 //   assignment: { steps: ["...", "..."], note: "..." } (optional, shown first)
 //   recap:     list of paragraphs, e.g. ["We started with...", "Next week..."]
+//   recapTitle: heading for the recap block (optional, default "Class recap")
+//   links:     links shown under the recap, e.g. { label: "Artist site", href: "https://..." }
 //   files:     PDFs/handouts (images show as a thumbnail), e.g. { label: "Value study handout", href: "/assignment-files/pdfs/week-02-value-study.pdf" }
 //   photos:    images, e.g. { src: "/assignment-files/photos/week-02-demo.jpg", caption: "Demo: value scale" }
 //   materials: list of items to bring
@@ -88,9 +90,27 @@ window.ASSIGNMENTS = {
       title: "Mixed Media I",
       topic: "Layer + transform",
       date: "",
-      recap: [],
+      recapTitle: "Recap and assignment",
+      recap: [
+        "You will be creating a single, or if you are feeling brave, a multi-panel art piece on paper, wood, canvas, an old window, old clothing, etc. This will be the art substrate that you are painting and working on.",
+        "Feel free to work “outside of the frame” as we saw with Rauschenberg, and with the IG artist reel that we watched who integrated the string into and outside of his art pieces.",
+        "Use found objects, homemade paint/pigment, collage, photos, prints, fibers, sand, dirt, straw, flowers, and so on.",
+        "Reference artists and images. We looked at these artists:",
+      ],
+      links: [
+        { label: "Robert Rauschenberg (video)", href: "https://youtu.be/DGuo2oW-6_8?si=v2ZJFg8FSZM6M7Gd" },
+        { label: "William Catling", href: "https://williamcatling.com/" },
+        { label: "Misc. mixed media tutorial (video)", href: "https://www.youtube.com/watch?v=wA3HQH6gD8M&list=PLUE608AhaUzo" },
+        { label: "Creating texture with your paint (video)", href: "https://www.youtube.com/watch?v=hxujbDVFGWI&list=PLUE608AhaUzo&index=3" },
+      ],
       files: [],
-      photos: [],
+      photos: [
+        { src: "/assignment-files/photos/week-06-rauschenberg-1.webp", caption: "Robert Rauschenberg, Combine" },
+        { src: "/assignment-files/photos/week-06-rauschenberg-2.webp", caption: "Robert Rauschenberg, Combine" },
+        { src: "/assignment-files/photos/week-06-rauschenberg-3.webp", caption: "Robert Rauschenberg, Combine" },
+        { src: "/assignment-files/photos/week-06-rauschenberg-4.webp", caption: "Robert Rauschenberg, silkscreen paintings (Tate Modern)" },
+        { src: "/assignment-files/photos/week-06-rauschenberg-5.webp", caption: "Robert Rauschenberg, mixed media collage" },
+      ],
       materials: ["Glue","scissors","collage papers","found materials","casein paints"],
     },
     {
