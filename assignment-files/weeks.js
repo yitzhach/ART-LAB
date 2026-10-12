@@ -89,7 +89,7 @@ window.ASSIGNMENTS = {
     {
       week: 6,
       title: "Mixed Media I",
-      topic: "Layer + transform",
+      topic: "Layer + transform · 2-week project (Weeks 6–7)",
       date: "",
       recapTitle: "Recap and assignment",
       recap: [
@@ -126,13 +126,13 @@ window.ASSIGNMENTS = {
     },
     {
       week: 7,
-      title: "Mixed Media II",
-      topic: "Composition",
+      title: "Mixed Media I (continued)",
+      topic: "Mid-project progress: share photos of your Week 6 piece",
       date: "",
       recap: [],
       files: [],
       photos: [],
-      materials: ["Printed images","tracing paper","glue","paints"],
+      materials: ["Your Week 6 mixed media piece and materials","photos of your progress"],
     },
     {
       week: 8,
