@@ -22,7 +22,7 @@
 // A week with no recap, files or photos shows as "Coming soon".
 // Put uploaded PDFs in assignment-files/pdfs/ and images in assignment-files/photos/.
 
-// Mixed media sculpture unit (Weeks 8 and on). "Bones and Skin" is a working
+// Mixed media sculpture unit (Weeks 8–13). "Bones and Skin" is a working
 // title: change it here and it updates everywhere on the page.
 const UNIT_NAME = "Bones and Skin";
 
@@ -44,14 +44,14 @@ const UNIT_ASSIGNMENTS = [
   {
     label: "Assignment 2",
     title: "Clay over the armature",
-    intro: "Start with clay while it is still workable, before any plaster or cement comes into the room.",
+    intro: "Start with clay while it is still workable, before any plaster or cement comes out.",
     steps: [
       { n: "03", title: "Press clay onto the bones", text: "Score the foil, brush on a little slip or water, and press clay in thin slabs and coils. Keep walls even, about 1/2 to 3/4 inch. Press firmly so the clay locks into the foil ridges and hooks.", lookFor: "Clay that grips the armature with no hollow pockets or sliding." },
       { n: "04", title: "Texture and carve", text: "Stamp, scratch, pinch, and drag tools through the surface. Leave a few deep valleys and a few smooth, calm areas. Mark where fiber will wrap or poke through later.", lookFor: "Ridges, valleys, and open areas that will catch plaster or cement." },
       { n: "05", title: "Dry slowly", text: "Cover loosely with plastic or a damp cloth for the first day, then uncover and dry flat or supported. Check thick areas for cracks and press them closed while the clay is still damp." },
     ],
     notes: [
-      { label: "Kiln note", text: "Foil armatures cannot be fired with clay in the kiln, and most clay-over-foil pieces will not be fired at all. Use air-dry clay, or treat these as finished air-dried surfaces. Ask the instructor before anything goes near a kiln." },
+      { label: "Use air-dry clay", text: "Foil armatures cannot be fired in a kiln, so these pieces stay air-dried." },
       { label: "Keep clay and plaster apart", text: "Use separate tools, buckets, and scrap bins for each. Plaster contaminates clay." },
     ],
   },
@@ -84,8 +84,8 @@ const UNIT_ASSIGNMENTS = [
 
 const UNIT_MATERIALS = [
   // 1/8 inch wire size is an assumption: confirm with product instructions.
-  { group: "Armature", text: "Heavy-duty aluminum foil (provided). Optional: soft aluminum armature wire, about 1/8 inch, which students may buy themselves." },
-  { group: "Clay", text: "Ceramic or air-dry clay, slip or water, and a scoring tool." },
+  { group: "Armature", text: "Heavy-duty household aluminum foil. Optional: soft aluminum armature wire, about 1/8 inch, which students may buy themselves." },
+  { group: "Clay", text: "Air-dry clay, slip or water, and a scoring tool." },
   { group: "Fiber", text: "String, yarn, jute, burlap, cotton gauze, fabric strips, and an optional small amount of alkali-resistant or synthetic fiber for inside cement." },
   { group: "Plaster and cement", text: "Gypsum plaster, plus Portland or CSA cement-based products." },
   { group: "Tools", text: "Brushes, palette knives, plastic cards, blunt craft sticks, wire cutters and pliers, sponges, and scissors." },
@@ -99,7 +99,7 @@ const UNIT_SCHEDULE = {
   note: "Draft schedule. Weeks 9–13 may change to fit our class length.",
   columns: ["Session", "Focus", "Minutes", "Goal"],
   rows: [
-    ["Week 8", "Collage showcase, then unit intro", "15 intro, rest showcase", "Share fiber collages; sketch a sculpture gesture"],
+    ["Week 8", "Collage showcase, then unit intro", "15 intro, rest showcase", "Share Art-chaeology collages; sketch a sculpture gesture"],
     ["Week 9", "Twist the armature", "60", "Finished, balanced foil armature (steps 01–02)"],
     ["Week 10", "Clay over the armature", "60", "Textured clay on the armature; start drying (steps 03–05)"],
     ["Week 11", "Wrap in fiber", "60", "Fiber wrapped or draped; plan what stays visible (steps 06–08)"],
@@ -114,7 +114,7 @@ const STUDIO_CARE = [
   { label: "Drains", text: "Plaster and cement never go down the sink. Let leftovers harden in a bucket or cup and throw them in the trash." },
   { label: "Heat", text: "Setting plaster and cement warms up, so don't hold thick mixes in bare hands." },
   { label: "Wire", text: "Cap or fold sharp wire and foil ends. Wear eye protection when cutting wire." },
-  { label: "Ventilation and supervision", text: "Keep the room ventilated. Cement and plaster mixing happens under teacher supervision." },
+  { label: "Ventilation", text: "Work in a well-ventilated space." },
 ];
 
 window.ASSIGNMENTS = {
@@ -239,11 +239,21 @@ window.ASSIGNMENTS = {
     {
       week: 8,
       title: "Collage Showcase",
-      topic: "Share your fiber collage, then meet the next unit: " + UNIT_NAME,
+      topic: "Share your Art-chaeology collage, then meet the next unit: " + UNIT_NAME,
       date: "",
+      due: "Finish this week. You can keep working on it until Week 9.",
+      assignment: {
+        steps: [
+          "Build the strata, if you haven’t finished: press thin paper over your raised textures, build and bury layers of paper and color, leave loose corners and string tails, and dry flat before excavating.",
+          "Pull a path through: test one loose string tail and pull it slowly back across the surface to lift a narrow channel. Stop if the whole layer lifts, and leave other strings buried for relief.",
+          "Excavate, edit, and finish: peel loose corners and scrape gently with a blunt stick to reveal earlier strata. Keep some found fragments as clues to your story.",
+          "Finish with visible strata, one excavated pathway, and raised texture. Be ready to describe one artifact: a paper or image fragment that carries your story.",
+        ],
+        note: "Optional: try the extensions on pages 4–5 of the Art-chaeology packet below (bury an image, reveal a story). Use blunt tools and avoid dry sanding. If a layer resists peeling, try another loose edge rather than forcing it.",
+      },
       recapTitle: "Collage showcase",
       recap: [
-        "We have spent seven weeks on our fiber collage projects. This week each student presents their collage.",
+        "This week each student shares their Art-chaeology collage, our mixed media project from Weeks 6–7. Finished or still in progress is fine.",
         "When you share, tell us which strata came first, what artifacts you uncovered, and one discovery you made along the way.",
         "Tip: photos of your collage are easier to share than holding it up to your Zoom camera.",
         "We will also take about 15 minutes to introduce our next unit, " + UNIT_NAME + ", and sketch a quick gesture for your sculpture.",
@@ -269,10 +279,10 @@ window.ASSIGNMENTS = {
         note: "The photos in the packet are AI-generated examples. Your results will vary.",
       },
       unit: {
-        eyebrow: "Weeks 8 and on",
+        eyebrow: "Weeks 8–13",
         title: "Next unit: " + UNIT_NAME,
         intro: [
-          "A mixed media sculpture unit, Weeks 8 and on, using ceramic clay, fiber, and cementitious products (gypsum plaster, Portland cement or CSA cement products). You will build a foil armature, then clothe it in clay, fiber, plaster, and cement, as a freestanding piece or a textured relief that hangs on a wall.",
+          "A mixed media sculpture unit, Weeks 8–13, using air-dry clay, fiber, and cementitious products (gypsum plaster, Portland cement or CSA cement products). You will build a foil armature, then clothe it in clay, fiber, plaster, and cement, as a freestanding piece or a textured relief that hangs on a wall.",
           "Every piece starts with a twisted aluminum foil armature. The order is: foil armature, then clay, then fiber, then a plaster or cement skin.",
         ],
         assignments: UNIT_ASSIGNMENTS,
@@ -280,7 +290,7 @@ window.ASSIGNMENTS = {
         schedule: UNIT_SCHEDULE,
         care: STUDIO_CARE,
       },
-      materials: ["Your fiber collage, or photos of it","sketchbook and pencil for a quick gesture sketch"],
+      materials: ["Your Art-chaeology collage, or photos of it","your collage materials, to keep working before Week 9","blunt craft stick for excavating","sketchbook and pencil for a quick gesture sketch"],
     },
     {
       week: 9,
@@ -293,7 +303,7 @@ window.ASSIGNMENTS = {
       files: [],
       photos: [],
       // 1/8 inch wire size is an assumption: confirm with product instructions.
-      materials: ["Your gesture sketch from Week 8","heavy-duty aluminum foil (provided)","optional: soft aluminum armature wire, about 1/8 inch (students buy their own)","wire cutters and pliers, if using wire","tape for capping sharp wire ends","eye protection when cutting wire"],
+      materials: ["Your gesture sketch from Week 8","heavy-duty household aluminum foil","optional: soft aluminum armature wire, about 1/8 inch (students buy their own)","wire cutters and pliers, if using wire","tape for capping sharp wire ends","eye protection when cutting wire"],
       care: STUDIO_CARE,
     },
     {
@@ -306,7 +316,7 @@ window.ASSIGNMENTS = {
       recap: [],
       files: [],
       photos: [],
-      materials: ["Your foil armature from Week 9","ceramic or air-dry clay","slip or water","scoring tool","texture tools: plastic cards, blunt craft sticks, brushes","plastic sheeting or a damp cloth for slow drying","sponges and rags","a bucket and tools used only for clay"],
+      materials: ["Your foil armature from Week 9","air-dry clay","slip or water","scoring tool","texture tools: plastic cards, blunt craft sticks, brushes","plastic sheeting or a damp cloth for slow drying","sponges and rags","a bucket and tools used only for clay"],
       care: STUDIO_CARE,
     },
     {
@@ -319,42 +329,48 @@ window.ASSIGNMENTS = {
       recap: [],
       files: [],
       photos: [],
-      materials: ["Your armature with its dry clay layer","string, yarn, and fabric strips","glue or slip for securing ends","scissors","for the optional soak and drape: jute, burlap, or cotton gauze, plus thin plaster or slurry, disposable cups, and plastic sheeting","optional: a small amount of synthetic or alkali-resistant fiber for inside cement","dust mask, gloves, and eye protection if plaster is mixed"],
+      materials: ["Your armature with its dry clay layer","string, yarn, and fabric strips","glue or slip for securing ends","scissors","for the optional soak and drape: jute, burlap, or cotton gauze, plus thin plaster or slurry, disposable cups, and plastic sheeting","optional: a small amount of synthetic or alkali-resistant fiber for inside cement","dust mask, gloves, and eye protection if you mix plaster"],
       care: STUDIO_CARE,
     },
     {
       week: 12,
-      title: "Chance + Experimental Process",
-      topic: "Chance and control",
+      title: UNIT_NAME + " IV",
+      topic: "Plaster and cement skin",
       date: "",
+      unitAssignment: UNIT_ASSIGNMENTS[3],
+      goal: "Thin layers applied; cover to cure (steps 09–10).",
       recap: [],
       files: [],
       photos: [],
-      materials: ["Gel medium","brayer","gel plate","sun-print paper","laser-printed images"],
+      materials: ["Your fiber-wrapped sculpture","a small scrap piece with the same layers, for a test","gypsum plaster, or a Portland or CSA cement product","disposable cups and a stick for mixing","palette knife and brushes","plastic sheeting","dust mask, gloves, and eye protection"],
+      care: STUDIO_CARE,
     },
     {
       week: 13,
-      title: "Final Project I",
-      topic: "Concept + material plan",
+      title: UNIT_NAME + " V",
+      topic: "Cure, finish, and share",
       date: "",
+      unitAssignment: UNIT_ASSIGNMENTS[3],
+      goal: "Rub back, finish, and present (steps 11–12).",
       recap: [],
       files: [],
       photos: [],
-      materials: ["Anything from the semester’s kits; the student’s plan decides"],
+      materials: ["Your sculpture","damp sponge","a small amount of pigment, wax, or sealer","a phone for photos"],
+      care: STUDIO_CARE,
     },
     {
       week: 14,
-      title: "Final Project II",
-      topic: "Build",
+      title: "Final Project I",
+      topic: "Concept + build",
       date: "",
       recap: [],
       files: [],
       photos: [],
-      materials: ["Final-project materials"],
+      materials: ["Anything from the semester’s materials; the student’s plan decides"],
     },
     {
       week: 15,
-      title: "Final Project III",
+      title: "Final Project II",
       topic: "Develop + refine",
       date: "",
       recap: [],
@@ -364,7 +380,7 @@ window.ASSIGNMENTS = {
     },
     {
       week: 16,
-      title: "Final Project IV",
+      title: "Final Project III",
       topic: "Finish + present",
       date: "",
       recap: [],
