@@ -92,6 +92,59 @@
   .assignment .note { margin:14px 0 0; font-size:15px; line-height:1.55; color:var(--muted); }
   .assignment .due { margin:0 0 12px; }
 
+  .btn svg { vertical-align:-4px; margin-right:8px; }
+  h4.label { font-size:12px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
+
+  .featured .card { border:1px solid var(--divider); border-radius:3px; padding:20px; }
+  .featured .card-head { display:flex; gap:12px; align-items:flex-start; }
+  .featured .card-head svg { flex:0 0 auto; color:var(--accent); margin-top:2px; }
+  .featured .card-title { margin:0 0 6px; font-size:17px; font-weight:700; }
+  .featured p { margin:0; font-size:16px; line-height:1.6; }
+  .featured .actions { display:flex; gap:12px; flex-wrap:wrap; margin:18px 0; }
+  .featured ul { margin:0; padding-left:20px; font-size:15px; line-height:1.6; }
+  .featured li + li { margin-top:6px; }
+  .featured .note { margin-top:14px; font-size:14px; color:var(--muted); }
+
+  .unit { border-top:1px solid var(--divider); padding-top:32px; }
+  .unit .unit-title { font-size:clamp(22px,3vw,30px); line-height:1.1; color:var(--text); letter-spacing:-0.01em; margin:8px 0 16px; }
+  .unit > p { font-size:17px; line-height:1.6; margin:0 0 14px; max-width:65ch; }
+  .unit .care-link { font-size:16px; font-weight:600; }
+  .unit .care-link a { color:var(--accent); }
+  .unit-step { border:1px solid var(--divider); border-radius:3px; margin-top:12px; }
+  details.unit-step > summary { cursor:pointer; padding:16px 18px; font-size:16px; font-weight:700; }
+  details.unit-step > summary:hover { color:var(--accent); }
+  details.unit-step[open] > summary { border-bottom:1px solid var(--divider); }
+  .step-body { padding:18px; }
+  .assignment .unit-step { border:none; margin:0; }
+  .assignment .step-body { padding:0; }
+  .assignment h4.step-head { font-size:20px; margin:0 0 12px; }
+  .step-intro { font-size:16px; line-height:1.6; margin:0 0 18px; }
+  ol.steps { list-style:none; margin:0; padding:0; display:grid; gap:18px; }
+  ol.steps li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; }
+  ol.steps .num { font-family:'Archivo Black',sans-serif; color:var(--accent); font-size:18px; line-height:1.4; min-width:28px; }
+  ol.steps p { margin:0 0 6px; font-size:16px; line-height:1.6; }
+  ol.steps .step-title { font-weight:700; }
+  ol.steps .look { font-size:15px; color:var(--muted); }
+  ul.notes { margin:20px 0 0; padding-left:20px; font-size:15px; line-height:1.6; }
+  ul.notes li + li { margin-top:8px; }
+  .unit-block { margin-top:32px; }
+
+  .care { border:2px solid var(--accent); border-radius:3px; padding:20px 22px; scroll-margin-top:90px; }
+  .care h3, .care h4.label { color:var(--accent); }
+  .care ul { margin:0; padding-left:20px; font-size:15px; line-height:1.6; }
+  .care li + li { margin-top:8px; }
+
+  table.schedule { width:100%; border-collapse:collapse; font-size:15px; line-height:1.5; }
+  table.schedule th { text-align:left; font-size:11px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); padding:8px 12px 8px 0; border-bottom:1px solid var(--divider-strong); }
+  table.schedule td { padding:10px 12px 10px 0; border-bottom:1px solid var(--divider); vertical-align:top; }
+  @media (max-width:640px) {
+    table.schedule thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    table.schedule, table.schedule tbody, table.schedule tr, table.schedule td { display:block; }
+    table.schedule tr { padding:10px 0; border-bottom:1px solid var(--divider); }
+    table.schedule td { border:none; padding:2px 0; }
+    table.schedule td::before { content:attr(data-label) ': '; font-weight:700; }
+  }
+
   .files li { display:flex; gap:8px; }
   .files li > a.open { flex:1 1 auto; min-width:0; }
   .files a.dl { flex:0 0 auto; width:52px; justify-content:center; padding:0; color:var(--muted); }
@@ -260,6 +313,43 @@
     if (Math.abs(dx) > 50 && vItems.length > 1) show(vIndex + (dx < 0 ? 1 : -1));
   });
 
+  // Unit blocks: numbered steps with "Look for" notes, materials, schedule table and studio care.
+  var labeled = function (tag, item, cls) {
+    return el(tag, cls ? { class: cls } : {}, [el('strong', { text: (item.label || item.group) + ': ' }), document.createTextNode(item.text)]);
+  };
+  var unitStep = function (a, collapsible) {
+    var body = el('div', { class: 'step-body' }, [
+      a.intro ? el('p', { class: 'step-intro', text: a.intro }) : null,
+      el('ol', { class: 'steps' }, a.steps.map(function (s) {
+        return el('li', {}, [el('span', { class: 'num', text: s.n }), el('div', {}, [
+          el('p', { class: 'step-title', text: s.title }),
+          el('p', { text: s.text }),
+          s.lookFor ? labeled('p', { label: 'Look for', text: s.lookFor }, 'look') : null
+        ])]);
+      })),
+      (a.notes || []).length ? el('ul', { class: 'notes' }, a.notes.map(function (n) { return labeled('li', n); })) : null
+    ]);
+    var heading = a.label + ': ' + a.title;
+    if (collapsible) return el('details', { class: 'unit-step' }, [el('summary', { text: heading }), body]);
+    return el('div', { class: 'unit-step' }, [el('h4', { class: 'step-head', text: heading }), body]);
+  };
+  var careBlock = function (care, tag, id) {
+    var attrs = { class: 'care' + (tag === 'h3' ? ' block' : ' unit-block') };
+    if (id) attrs.id = id;
+    return el('div', attrs, [el(tag, { class: tag === 'h4' ? 'label' : '', text: 'Studio care' }),
+      el('ul', {}, care.map(function (c) { return labeled('li', c); }))]);
+  };
+  var scheduleBlock = function (s) {
+    return el('div', { class: 'unit-block' }, [el('h4', { class: 'label', text: s.title }),
+      s.note ? el('p', { class: 'topic', style: 'margin:-6px 0 14px;font-size:14px', text: s.note }) : null,
+      el('table', { class: 'schedule' }, [
+        el('thead', {}, [el('tr', {}, s.columns.map(function (c) { return el('th', { scope: 'col', text: c }); }))]),
+        el('tbody', {}, s.rows.map(function (r) {
+          return el('tr', {}, r.map(function (v, i) { return el('td', { 'data-label': s.columns[i], text: v }); }));
+        }))
+      ])]);
+  };
+
   var jump = document.getElementById('week-jump');
   var container = document.getElementById('weeks');
 
@@ -267,7 +357,8 @@
     var assignment = w.assignment || null;
     var recap = w.recap || [], files = w.files || [], photos = w.photos || [], materials = w.materials || [];
     var isCurrent = w.week === data.currentWeek;
-    var isPosted = assignment || recap.length || files.length || photos.length;
+    var featured = w.featured || null, unit = w.unit || null, unitAssignment = w.unitAssignment || null, care = w.care || [];
+    var isPosted = assignment || recap.length || files.length || photos.length || featured || unit || unitAssignment;
     var status = isCurrent ? 'current' : isPosted ? 'posted' : 'soon';
     var id = 'week-' + pad(w.week);
 
@@ -289,6 +380,12 @@
         w.due ? el('p', { class: 'due', text: w.due }) : null,
         el('ol', {}, (assignment.steps || []).map(function (t) { return el('li', { text: t }); })),
         assignment.note ? el('p', { class: 'note', text: assignment.note }) : null
+      ])]));
+    }
+    if (unitAssignment) {
+      left.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'The assignment' }), el('div', { class: 'assignment' }, [
+        w.goal ? el('p', { class: 'due', text: 'Goal: ' + w.goal }) : null,
+        unitStep(unitAssignment, false)
       ])]));
     }
     if (recap.length) {
@@ -315,6 +412,35 @@
           });
           return el('figure', {}, [a, ph.caption ? el('figcaption', { text: ph.caption }) : null]);
         }))].concat(w.photosLink ? [el('p', { class: 'photos-link' }, [el('a', { href: w.photosLink.href, target: '_blank', rel: 'noopener noreferrer', text: w.photosLink.label + ' →' })])] : [])));
+    } else if (w.photosPlaceholder) {
+      left.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Student work' }), el('p', { class: 'placeholder', text: w.photosPlaceholder })]));
+    }
+    if (featured) {
+      var dlBtn = el('a', { href: featured.href, download: '', class: 'btn' }, [dlIcon(), document.createTextNode('Download PDF')]);
+      left.appendChild(el('div', { class: 'block featured' }, [el('h3', { text: featured.heading }), el('div', { class: 'card' }, [
+        el('div', { class: 'card-head' }, [fileIcon(), el('div', {}, [
+          el('p', { class: 'card-title', text: featured.label }),
+          featured.description ? el('p', { text: featured.description }) : null
+        ])]),
+        el('div', { class: 'actions' }, [dlBtn, el('a', { href: featured.href, target: '_blank', rel: 'noopener', class: 'btn ghost', text: 'Open in browser' })]),
+        (featured.contents || []).length ? el('ul', {}, featured.contents.map(function (c) { return el('li', { text: c }); })) : null,
+        featured.note ? el('p', { class: 'note', text: featured.note }) : null
+      ])]));
+    }
+    if (unit) {
+      var careId = id + '-studio-care';
+      left.appendChild(el('div', { class: 'block unit' }, [
+        unit.eyebrow ? el('div', { class: 'eyebrow', text: unit.eyebrow }) : null,
+        el('h3', { class: 'display unit-title', text: unit.title })
+      ].concat(
+        (unit.intro || []).map(function (p) { return el('p', { text: p }); }),
+        unit.care ? [el('p', { class: 'care-link' }, [el('a', { href: '#' + careId, text: 'Read Studio care before working with plaster or cement →' })])] : [],
+        (unit.assignments || []).map(function (a) { return unitStep(a, true); }),
+        unit.materials ? [el('div', { class: 'unit-block' }, [el('h4', { class: 'label', text: 'Gather your materials' }),
+          el('ul', { class: 'materials' }, unit.materials.map(function (m) { return labeled('li', m); }))])] : [],
+        unit.schedule ? [scheduleBlock(unit.schedule)] : [],
+        unit.care ? [careBlock(unit.care, 'h4', careId)] : []
+      )));
     }
     if (files.length) {
       var isImage = function (f) { return /\.(webp|jpe?g|png|gif)$/i.test(f.href.split('?')[0]); };
@@ -340,6 +466,7 @@
       right.appendChild(el('div', { class: 'block' }, [el('h3', { text: 'Materials' }), el('ul', { class: 'materials' },
         materials.map(function (m) { return el('li', { text: cap(m) }); }))]));
     }
+    if (care.length) right.appendChild(careBlock(care, 'h3'));
 
     var tagText = status === 'current' ? 'This week' : status === 'posted' ? 'Posted' : 'Coming soon';
     container.appendChild(el('section', { class: 'week', id: id, 'aria-labelledby': id + '-title' }, [
